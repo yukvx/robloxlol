@@ -1746,51 +1746,95 @@ local sections = {
     othersettings = configTab:createGroup('right', 'Other');
 }
         --[[>>                                  <<]]
-                --buttons for legit (tab 1)
 sections.LegitSec1:addButton({
     text = "print \"D\" 1",
     callback = function() print("d") end
 })
+--
+sections.LegitSec1:addToggle({
+    text = "Toggle 1",
+    callback = function() print("d") end
+})
+--
 sections.LegitSec2:addButton({
     text = "print \\D\" 2",
     callback = function() print("d") end
 })
+--
+sections.LegitSec2:addToggle({
+    text = "Toggle 2",
+    callback = function() print("d") end
+})
+--
 sections.LegitSec3:addButton({
     text = "print \"D\" 3",
     callback = function() print("d") end
 })
-        --[[>>                                  <<]]
-
-
-                --[[>>                                  <<]]
-                --buttons for legit (tab 1)
+--
+sections.LegitSec3:addToggle({
+    text = "Toggle 3",
+    callback = function() print("d") end
+})
+--
 sections.VisualsSec1:addButton({
     text = "print \"D\" 4",
     callback = function() print("d") end
 })
+--
+sections.VisualsSec1:addToggle({
+    text = "Toggle 4",
+    callback = function() print("d") end
+})
+--
 sections.VisualsSec2:addButton({
     text = "print \\D\" 5",
     callback = function() print("d") end
 })
+--
+sections.VisualsSec2:addToggle({
+    text = "Toggle 5",
+    callback = function() print("d") end
+})
+--
 sections.VisualsSec3:addButton({
     text = "print \"D\" 6",
     callback = function() print("d") end
 })
-        --[[>>                                  <<]]
-
-
-                --[[>>                                  <<]]
-                --buttons for legit (tab 1)
+--
+sections.VisualsSec3:addToggle({
+    text = "Toggle 6",
+    callback = function() print("d") end
+})
+--
 sections.MiscSec1:addButton({
     text = "print \"D\" 7",
     callback = function() print("d") end
 })
+sections.MiscSec1:addToggle({
+    text = "Toggle 7",
+    callback = function() print("d") end
+})
+--
 sections.MiscSec2:addButton({
     text = "print \\D\" 8",
     callback = function() print("d") end
 })
+--
+sections.MiscSec2:addToggle({
+    text = "Toggle 8",
+    callback = function() print("d") end
+})
 sections.MiscSec3:addButton({
     text = "print \"D\" 9",
+    callback = function() print("d") end
+})
+--
+sections.MiscSec3:addToggle({
+    text = "Toggle 9",
+    callback = function() print("d") end
+})
+sections.MiscSec1:addSlider({
+    text = "Sdlier 9",
     callback = function() print("d") end
 })
         --[[>>                                  <<]]
