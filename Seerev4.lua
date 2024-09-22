@@ -1,4 +1,5 @@
 --[[
+(wave doesnt support gz)
 Hello, I wanted to put out a "Fixed" Seere Ui cs I used to like this ui a lot so I just did this have fun with this ui Im still really bad at coding so have fun with this ui 
 Also, The config system is broke and im too lazy to fix it sorryyy :sob:
 Made On 9/20/24 On Wave Premium
