@@ -1,8 +1,8 @@
 --[[
-(wave doesnt support gz)
 Hello, I wanted to put out a "Fixed" Seere Ui cs I used to like this ui a lot so I just did this have fun with this ui Im still really bad at coding so have fun with this ui 
 Also, The config system is broke and im too lazy to fix it sorryyy :sob:
-Made On 9/20/24 On Wave Premium
+Made On 9/20/24 On Wave Premium Last updated on 9/21/24 5pm (my wave key expired) 
+some things are broke like watermark/keybind toggle I may update this example more over time if I get an executor I trust and that works
 ]]
 
 
@@ -51,13 +51,14 @@ local ColorPicker_Gradients = {
 
 
 
-
-
+local fps = string.format('%.0f', game:GetService("Stats").Workspace.Heartbeat:GetValue())
+local ping = string.format('%.0f', game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
 local players = game:GetService("Players")
 local localPlayer = players.LocalPlayer
 local inputService   = game:GetService("UserInputService")
 local runService     = game:GetService("RunService")
 local tweenService   = game:GetService("TweenService")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/linoria.lua"))()
 local Tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/vozoid/roblox-ui/refs/heads/main/utility/tween.luau"))()
 local mouse          = localPlayer:GetMouse()
 local menu           = game:GetObjects("rbxassetid://12702460854")[1]
@@ -81,7 +82,20 @@ menu.Parent          = game:GetService("CoreGui")
 local function Rejoin()
     game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end
+--[[>>init Binds and Watermark>>]]
+getgenv().Toggledwatermark = true
 
+getgenv().Toggledkeybinds = true
+Library:SetWatermarkVisibility(getgenv().Toggledwatermark)
+Library.KeybindFrame.Visible = getgenv().Toggledkeybinds
+local function updateWatermark()
+    while true do
+        local fps = string.format('%.0f', game:GetService("Stats").Workspace.Heartbeat:GetValue())
+        local ping = string.format('%.0f', game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
+        Library:SetWatermark('<font color=\"#ffffff\">Angel</font><font color=\"#df9eff\">.Girls</font> | FPS: ' .. fps .. ' | Ping: ' .. ping .. ' |')
+        wait(0.1) -- Update every second (adjust as needed)
+    end
+end
 
 --[[>>Start Of Ui>>]]
 
@@ -241,7 +255,7 @@ function library:addTab(name)
         backframe.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
         backframe.BorderSizePixel = 0
         backframe.Position = UDim2.new(0, 10, 0, -2)
-        print(title.TextBounds.X)
+        --print(title.TextBounds.X)
         if title.TextBounds.X then
             backframe.Size = UDim2.new(0, 13 + title.TextBounds.X, 0, 3)
         else
@@ -1757,6 +1771,8 @@ sections.LegitSec1:addToggle({
     callback = function() print("d") end
 })
 --
+
+--
 sections.LegitSec2:addButton({
     text = "print \\D\" 2",
     callback = function() print("d") end
@@ -1851,13 +1867,25 @@ sections.configsettings:addButton({text = "Delete", callback = library.deleteCon
 sections.configsettings:addButton({text = "Refresh", callback = library.refreshConfigs})
 
 sections.uisettings:addToggle({text = "Show Game Name", flag = "show_game_name"})
+
+sections.uisettings:addToggle({
+    text = "Show Watermark",
+    callback = function(Valuee) getgenv().Toggledwatermark = Valuee end
+})
+
+sections.uisettings:addToggle({
+    text = "Show Keybinds",
+    callback = function(Valuee) getgenv().Toggledkeybinds = Valuee end
+})
+
 sections.uisettings:addTextbox({text = "Menu Title", flag = "menutitle"})
 sections.uisettings:addTextbox({text = "Domain", flag = "menudomain"})
 sections.uisettings:addColorpicker({text = "Domain Accent", ontop = true, flag = "domainaccent", color = Color3.new(1, 1, 1)})
 sections.uisettings:addColorpicker({text = "Menu Accent", ontop = true, flag = "menuaccent", color = Color3.new(1, 1, 1)})
 
-sections.othersettings:addToggle({text = "Show Keybinds", flag = "show_keybinds"})
 sections.othersettings:addButton({text = "Rejoin", callback = Rejoin})
+sections.othersettings:addToggle({text = "Show Keybinds", flag = "show_keybinds"})
 sections.configsettings:addButton({text = "Copy Game Invite"})
 sections.configsettings:addButton({text = "Rejoin Server"})
 sections.configsettings:addButton({text = "Server Hop"})
+
