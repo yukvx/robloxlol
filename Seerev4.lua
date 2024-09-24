@@ -1,8 +1,7 @@
 --[[
 Hello, I wanted to put out a "Fixed" Seere Ui cs I used to like this ui a lot so I just did this have fun with this ui Im still really bad at coding so have fun with this ui 
 Also, The config system is broke and im too lazy to fix it sorryyy :sob:
-Made On 9/20/24 On Wave Premium Last updated on 9/21/24 5pm (my wave key expired) 
-some things are broke like watermark/keybind toggle I may update this example more over time if I get an executor I trust and that works
+Made On 9/20/24 On Wave Premium
 ]]
 
 
@@ -58,8 +57,7 @@ local localPlayer = players.LocalPlayer
 local inputService   = game:GetService("UserInputService")
 local runService     = game:GetService("RunService")
 local tweenService   = game:GetService("TweenService")
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/linoria.lua"))()
-local Tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/vozoid/roblox-ui/refs/heads/main/utility/tween.luau"))()
+local Tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/vozoidtween.lua"))()
 local mouse          = localPlayer:GetMouse()
 local menu           = game:GetObjects("rbxassetid://12702460854")[1]
 local notifications1 = {}
@@ -83,19 +81,113 @@ local function Rejoin()
     game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end
 --[[>>init Binds and Watermark>>]]
-getgenv().Toggledwatermark = true
+-- Create the main GUI for the watermark
+local WatermarkUI = Instance.new("ScreenGui")
+WatermarkUI.Name = "Watermark"
+WatermarkUI.Parent = gethui()  -- Using gethui() for systems like Synapse, but replace with PlayerGui if necessary
 
-getgenv().Toggledkeybinds = true
-Library:SetWatermarkVisibility(getgenv().Toggledwatermark)
-Library.KeybindFrame.Visible = getgenv().Toggledkeybinds
-local function updateWatermark()
-    while true do
-        local fps = string.format('%.0f', game:GetService("Stats").Workspace.Heartbeat:GetValue())
-        local ping = string.format('%.0f', game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
-        Library:SetWatermark('<font color=\"#ffffff\">Angel</font><font color=\"#df9eff\">.Girls</font> | FPS: ' .. fps .. ' | Ping: ' .. ping .. ' |')
-        wait(0.1) -- Update every second (adjust as needed)
-    end
+local WatermarkOutline = Instance.new("Frame")
+local WatermarkInner = Instance.new("Frame")
+local WatermarkAccent = Instance.new("Frame")
+local WatermarkText = Instance.new("TextLabel")
+
+-- Setup the watermark elements
+WatermarkOutline.Name = "WatermarkOutline"
+WatermarkOutline.Parent = WatermarkUI
+WatermarkOutline.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+WatermarkOutline.Size = UDim2.new(0, 200, 0, 20)
+
+WatermarkInner.Parent = WatermarkOutline
+WatermarkInner.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+WatermarkInner.Size = UDim2.new(1, -4, 1, -4)
+
+WatermarkAccent.Parent = WatermarkInner
+WatermarkAccent.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Accent color
+WatermarkAccent.Size = UDim2.new(1, 0, 0, 1)
+
+WatermarkText.Parent = WatermarkInner
+WatermarkText.BackgroundTransparency = 1.0
+WatermarkText.Size = UDim2.new(1, 0, 1, 0)
+WatermarkText.Font = Enum.Font.SourceSans
+WatermarkText.TextColor3 = Color3.fromRGB(255, 255, 255)
+WatermarkText.TextSize = 14
+WatermarkText.Text = "RAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+
+-- Automatically resize the watermark based on text size
+WatermarkText:GetPropertyChangedSignal("Text"):Connect(function()
+    WatermarkOutline.Size = UDim2.new(0, WatermarkText.TextBounds.X + 10, 0, 20)
+end)
+
+-- Initialize visibility of watermark (start as visible)
+local watermarkVisible = false
+
+-- Toggle Function
+local function ToggleWatermark(isVisible)
+    watermarkVisible = isVisible
+    WatermarkUI.Enabled = isVisible  -- Show or hide the watermark UI
 end
+
+-- Function to set the position of the watermark
+local function setWatermarkPosition(x, y)
+    WatermarkOutline.Position = UDim2.new(0, x, 0, y)
+end
+
+-- Create Sliders for X and Y Position
+local function createSlider(text, flag, min, max, defaultValue, callback)
+    -- Create a Frame for the slider
+    local sliderFrame = Instance.new("Frame")
+    sliderFrame.Size = UDim2.new(0, 300, 0, 50)
+    sliderFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    sliderFrame.Parent = WatermarkUI
+
+    -- Slider Label
+    local sliderLabel = Instance.new("TextLabel")
+    sliderLabel.Size = UDim2.new(1, 0, 0, 20)
+    sliderLabel.Text = text
+    sliderLabel.BackgroundTransparency = 1
+    sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderLabel.Parent = sliderFrame
+
+    -- Slider
+    local slider = Instance.new("TextButton")
+    slider.Size = UDim2.new(1, 0, 0, 20)
+    slider.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    slider.Position = UDim2.new(0, 0, 0, 30)
+    slider.Parent = sliderFrame
+
+    -- Handle input
+    slider.MouseButton1Down:Connect(function()
+        local userInputService = game:GetService("UserInputService")
+        local dragging = true
+
+        -- Update slider value based on mouse movement
+        userInputService.InputChanged:Connect(function(input)
+            if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+                local mouseX = input.Position.X
+                local sliderStartX = sliderFrame.AbsolutePosition.X
+                local sliderWidth = sliderFrame.AbsoluteSize.X
+                local value = math.clamp((mouseX - sliderStartX) / sliderWidth, 0, 1) * (max - min) + min
+
+                callback(value) -- Call the callback function with the new value
+                slider.Size = UDim2.new(value / (max - min), 0, 0, 20) -- Update visual representation
+            end
+        end)
+
+        -- Stop dragging
+        userInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                dragging = false
+            end
+        end)
+    end)
+
+    -- Set initial value
+    callback(defaultValue)
+end
+
+
+-- Call ToggleWatermark to make the watermark visible at the start
+ToggleWatermark(false)
 
 --[[>>Start Of Ui>>]]
 
@@ -676,9 +768,13 @@ function library:addTab(name)
                 main.BorderColor3 = Color3.fromRGB(60, 60, 60)
             end)
         end
-        function group:addSlider(args,sub)
+        function group:addSlider(args, sub)
             if not args.flag or not args.max then return end
-            groupbox.Size += UDim2.new(0, 0, 0, 30)
+        
+            -- Adjust groupbox size to accommodate the slider
+            groupbox.Size = groupbox.Size + UDim2.new(0, 0, 0, 30)
+        
+            -- Creating the slider components
             local slider = Instance.new("Frame")
             local bg = Instance.new("Frame")
             local main = Instance.new("Frame")
@@ -687,12 +783,16 @@ function library:addTab(name)
             local valuetext = Instance.new("TextLabel")
             local UIGradient = Instance.new("UIGradient")
             local text = Instance.new("TextLabel")
+        
+            -- Slider setup
             slider.Name = "slider"
             slider.Parent = grouper
             slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             slider.BackgroundTransparency = 1.000
             slider.BorderSizePixel = 0
             slider.Size = UDim2.new(1, 0, 0, 30)
+        
+            -- Background frame of the slider
             bg.Name = "bg"
             bg.Parent = slider
             bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -700,21 +800,29 @@ function library:addTab(name)
             bg.BorderSizePixel = 2
             bg.Position = UDim2.new(0.02, -1, 0, 16)
             bg.Size = UDim2.new(0, 205, 0, 10)
+        
+            -- Main slider background
             main.Name = "main"
             main.Parent = bg
             main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             main.BorderColor3 = Color3.fromRGB(50, 50, 50)
             main.Size = UDim2.new(1, 0, 1, 0)
+        
+            -- Fill part of the slider
             fill.Name = "fill"
             fill.Parent = main
             fill.BackgroundColor3 = library.libColor
             fill.BackgroundTransparency = 0.200
             fill.BorderColor3 = Color3.fromRGB(60, 60, 60)
             fill.BorderSizePixel = 0
-            fill.Size = UDim2.new(0.617238641, 13, 1, 0)
+            fill.Size = UDim2.new(0.617, 13, 1, 0)
+        
+            -- Fill gradient
             local Fill_UIGradient = Instance.new("UIGradient", fill)
             Fill_UIGradient.Color = ColorPicker_Gradients.Slider
             Fill_UIGradient.Rotation = 90
+        
+            -- Button for interaction
             button.Name = "button"
             button.Parent = main
             button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -724,92 +832,131 @@ function library:addTab(name)
             button.Text = ""
             button.TextColor3 = Color3.fromRGB(0, 0, 0)
             button.TextSize = 14.000
+        
+            -- Value display
             valuetext.Parent = main
             valuetext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             valuetext.BackgroundTransparency = 1.000
             valuetext.Position = UDim2.new(0.5, 0, 0.5, 0)
             valuetext.Font = Enum.Font.Code
-            valuetext.Text = "0.9172/10"
+            valuetext.Text = args.value.."/"..args.max -- Display the current value
             valuetext.TextColor3 = Color3.fromRGB(255, 255, 255)
             valuetext.TextSize = 14.000
             valuetext.TextStrokeTransparency = 0.000
-            UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(105, 105, 105)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(121, 121, 121))}
-            UIGradient.Rotation = 90
-            UIGradient.Parent = main
+        
+            -- Label for the slider
             text.Name = "text"
             text.Parent = slider
             text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             text.BackgroundTransparency = 1.000
-            text.Position = UDim2.new(0.0299999993, -1, 0, 7)
-            text.ZIndex = 2
+            text.Position = UDim2.new(0.03, -1, 0, 7)
             text.Font = Enum.Font.Code
-            text.Text = args.text or args.flag
+            text.Text = args.text or args.flag -- Text that appears next to the slider
             text.TextColor3 = Color3.fromRGB(244, 244, 244)
             text.TextSize = 13.000
             text.TextStrokeTransparency = 0.000
             text.TextXAlignment = Enum.TextXAlignment.Left
-            --slider bg main
-
-            local entered = false
-            local scrolling = false
-            local amount = 0
+        
+            -- Function to update the value
             local function updateValue(value)
                 if library.colorpicking then return end
+        
+                -- Ensure the fill reflects the current value
                 if value ~= 0 then
-                    fill:TweenSize(UDim2.new(value/args.max,0,1,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.01)
+                    fill:TweenSize(UDim2.new(value / args.max, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.1)
                 else
-                    fill:TweenSize(UDim2.new(0,1,1,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.01)
+                    fill:TweenSize(UDim2.new(0, 1, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.1)
                 end
-                valuetext.Text = value..sub
+        
+                valuetext.Text = value .. (sub or "")
                 library.flags[args.flag] = value
                 if args.callback then
                     args.callback(value)
                 end
             end
+        
+            -- Handling slider scroll updates
             local function updateScroll()
                 if scrolling or library.scrolling or not newTab.Visible or library.colorpicking then return end
-                while inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) and menu.Enabled do runService.RenderStepped:Wait()
+                while inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) and menu.Enabled do
+                    runService.RenderStepped:Wait()
                     library.scrolling = true
-                    valuetext.TextColor3 = Color3.fromRGB(255,255,255)
+                    valuetext.TextColor3 = Color3.fromRGB(255, 255, 255)
                     scrolling = true
+        
+                    -- Calculate the new slider value based on mouse position
                     local value = args.min + ((mouse.X - button.AbsolutePosition.X) / button.AbsoluteSize.X) * (args.max - args.min)
-                    if value < 0 then value = 0 end
-                    if value > args.max then value = args.max end
-                    if value < args.min then value = args.min end
-                    updateValue(math.floor(value * 100)/100)
+                    value = math.clamp(value, args.min, args.max) -- Clamp the value between min and max
+                    updateValue(math.floor(value * 100) / 100)
                 end
-                if scrolling and not entered then
-                    valuetext.TextColor3 = Color3.fromRGB(255,255,255)
-                end
-                if not menu.Enabled then
-                    entered = false
-                end
-                if not menu.Enabled then
-                    entered = false
-                end
+        
+                -- Reset scrolling states
                 scrolling = false
                 library.scrolling = false
             end
-            button.MouseEnter:connect(function()
+        
+            -- Button mouse interactions
+            button.MouseEnter:Connect(function()
                 if library.colorpicking then return end
                 if scrolling or entered then return end
                 entered = true
                 main.BorderColor3 = library.libColor
-                while entered do wait()
+        
+                -- Listen for slider scroll updates
+                while entered do
+                    wait()
                     updateScroll()
                 end
             end)
-            button.MouseLeave:connect(function()
+        
+            button.MouseLeave:Connect(function()
                 entered = false
                 main.BorderColor3 = Color3.fromRGB(60, 60, 60)
             end)
+        
+            -- Set initial value if provided
             if args.value then
                 updateValue(args.value)
             end
-            library.flags[args.flag] = 0
-            library.options[args.flag] = {type = "slider",changeState = updateValue,skipflag = args.skipflag,oldargs = args}
-            updateValue(args.value or 0)
+        
+            -- Register slider in the library
+            library.flags[args.flag] = args.value or 0
+            library.options[args.flag] = {type = "slider", changeState = updateValue, skipflag = args.skipflag, oldargs = args}
         end
+        function group:addLabel(args)
+            if not args.text then return end
+        
+            -- Adjust the groupbox size to accommodate the label
+            groupbox.Size = groupbox.Size + UDim2.new(0, 0, 0, 20)
+        
+            -- Create a frame for the label
+            local labelFrame = Instance.new("Frame")
+            local labelText = Instance.new("TextLabel")
+        
+            -- Label frame properties
+            labelFrame.Name = "labelFrame"
+            labelFrame.Parent = grouper
+            labelFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            labelFrame.BackgroundTransparency = 1.000
+            labelFrame.BorderSizePixel = 0
+            labelFrame.Size = UDim2.new(1, 0, 0, 20)
+        
+            -- Label text properties
+            labelText.Name = "labelText"
+            labelText.Parent = labelFrame
+            labelText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            labelText.BackgroundTransparency = 1.000
+            labelText.Position = UDim2.new(0.03, -1, 0, 0) -- Adjust position as needed
+            labelText.Size = UDim2.new(0, 200, 0, 20)
+            labelText.Font = Enum.Font.Code -- You can change this to any font you prefer
+            labelText.Text = args.text -- Set the label text from the arguments
+            labelText.TextColor3 = Color3.fromRGB(244, 244, 244)
+            labelText.TextSize = 13.000
+            labelText.TextXAlignment = Enum.TextXAlignment.Left
+            labelText.TextStrokeTransparency = 0.000
+
+            return labelFrame
+        end        
         function group:addTextbox(args)
             if not args.flag then return end
             groupbox.Size += UDim2.new(0, 0, 0, 35)
@@ -1673,7 +1820,97 @@ function library:deleteConfig()
 end
 
 
+-- Assuming TweenService and InputService are already initialized
+local tweenService = game:GetService("TweenService")
+local inputService = game:GetService("UserInputService")
 
+-- Define the duration of the fade animation
+local fadeDuration = 0.3
+
+-- Function to create a fade effect
+local function FadeUI(element, targetTransparency, callback)
+    -- Tween the transparency property for a smooth transition
+    local tweenInfo = TweenInfo.new(fadeDuration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    
+    -- Loop through all UI elements inside the menu and apply fade
+    for _, descendant in pairs(element:GetDescendants()) do
+        if descendant:IsA("GuiObject") then
+            -- Determine the correct property to tween (for both text and background)
+            local tweenProperties = {}
+
+            -- If it has BackgroundTransparency, fade it
+            if descendant:FindFirstChild("BackgroundTransparency") then
+                tweenProperties.BackgroundTransparency = targetTransparency
+            end
+
+            -- If it has TextTransparency (like TextLabels), fade the text
+            if descendant:IsA("TextLabel") or descendant:IsA("TextButton") then
+                tweenProperties.TextTransparency = targetTransparency
+            end
+
+            -- Apply the tween to each descendant UI element
+            local tween = tweenService:Create(descendant, tweenInfo, tweenProperties)
+            tween:Play()
+
+            tween.Completed:Connect(function()
+                if callback then callback() end
+            end)
+        end
+    end
+end
+
+-- Toggle function to show/hide UI with fade effect
+local uiVisible = true
+local function ToggleUI()
+    if uiVisible then
+        -- Fade out all UI elements
+        FadeUI(menu, 1, function() 
+            menu.Enabled = false  -- Disable the entire UI after fading out
+        end)
+    else
+        -- Enable the UI first, then fade in all elements
+        menu.Enabled = true
+        FadeUI(menu, 0)
+    end
+    uiVisible = not uiVisible
+end
+
+-- Bind the toggle to a key (e.g., "End" key)
+inputService.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.Insert then
+        ToggleUI()  -- Call the toggle function when "End" is pressed
+    end
+end)
+
+local function UnloadUI()
+    -- Check if the menu exists and remove it
+    if menu then
+        menu:Destroy()  -- Destroy the UI
+    end
+
+    -- Clean up notifications
+    for _, notification in pairs(notifications1) do
+        notification:Destroy()
+    end
+    for _, notification in pairs(notifications2) do
+        notification:Destroy()
+    end
+
+    -- Hide the custom cursor if enabled
+    if Cursor then
+        Cursor:Remove()
+    end
+    if CursorOutline then
+        CursorOutline:Remove()
+    end
+
+    -- Restore the default mouse icon
+    game:GetService('UserInputService').MouseIconEnabled = true
+
+    -- Optionally reset any other states like toggled flags, etc.
+    -- For example, reset flags used in the library if needed.
+    library.flags = {}
+end
 
 
 
@@ -1761,16 +1998,37 @@ local sections = {
     othersettings = configTab:createGroup('right', 'Other');
 }
         --[[>>                                  <<]]
+
+        
+        sections.LegitSec1:addSlider({
+            text = "Volume", -- The label that appears next to the slider
+            flag = "VolumeSlider", -- A unique identifier for this slider
+            min = 0, -- The minimum value for the slider
+            max = 100, -- The maximum value for the slider
+            value = 50, -- The default starting value
+            callback = function(value) -- A function that gets called whenever the slider's value changes
+                print("Slider value changed to:", value) -- Your custom logic here
+                -- You can replace the print statement with any action, like adjusting volume
+            end
+        })
 sections.LegitSec1:addButton({
-    text = "print \"D\" 1",
-    callback = function() print("d") end
+    text = "p diddy",
+    callback = function() UnloadUI() end
 })
+--
+
+
+
 --
 sections.LegitSec1:addToggle({
     text = "Toggle 1",
     callback = function() print("d") end
 })
 --
+
+sections.MiscSec1:addLabel({
+    text = "This is a label!"
+})
 
 --
 sections.LegitSec2:addButton({
@@ -1868,11 +2126,39 @@ sections.configsettings:addButton({text = "Refresh", callback = library.refreshC
 
 sections.uisettings:addToggle({text = "Show Game Name", flag = "show_game_name"})
 
+-- Toggle setup (integrating your toggle with the watermark toggle)
 sections.uisettings:addToggle({
-    text = "Show Watermark",
-    callback = function(Valuee) getgenv().Toggledwatermark = Valuee end
+    text = "Toggle Watermark",
+    callback = function(value)
+        ToggleWatermark(value)  -- Pass true/false to toggle the visibility of the watermark
+    end
 })
 
+-- Create X Position Slider
+sections.LegitSec1:addSlider({
+    text = "Watermark X Position", -- The label that appears next to the slider
+    flag = "WatermarkXSlider", -- A unique identifier for this slider
+    min = 0, -- The minimum value for the slider
+    max = 2500, -- The maximum value for the slider
+    value = 0, -- The default starting value
+    callback = function(value) -- A function that gets called whenever the slider's value changes
+        setWatermarkPosition(value, WatermarkOutline.Position.Y.Offset)
+        print("Watermark X Position changed to:", value) -- Custom logic here
+    end
+})
+
+-- Create Y Position Slider
+sections.LegitSec1:addSlider({
+    text = "Watermark Y Position", -- The label that appears next to the slider
+    flag = "WatermarkYSlider", -- A unique identifier for this slider
+    min = -35, -- The minimum value for the slider
+    max = 1000, -- The maximum value for the slider
+    value = 0, -- The default starting value
+    callback = function(value) -- A function that gets called whenever the slider's value changes
+        setWatermarkPosition(WatermarkOutline.Position.X.Offset, value)
+        print("Watermark Y Position changed to:", value) -- Custom logic here
+    end
+})
 sections.uisettings:addToggle({
     text = "Show Keybinds",
     callback = function(Valuee) getgenv().Toggledkeybinds = Valuee end
