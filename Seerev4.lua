@@ -2,6 +2,7 @@
 Hello, I wanted to put out a "Fixed" Seere Ui cs I used to like this ui a lot so I just did this have fun with this ui Im still really bad at coding so have fun with this ui 
 Also, The config system is broke and im too lazy to fix it sorryyy :sob:
 Made On 9/20/24 On Wave Premium
+Updated 9/25/24 4am $$$ pst
 ]]
 
 
@@ -57,6 +58,7 @@ local localPlayer = players.LocalPlayer
 local inputService   = game:GetService("UserInputService")
 local runService     = game:GetService("RunService")
 local tweenService   = game:GetService("TweenService")
+
 local Tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/vozoidtween.lua"))()
 local mouse          = localPlayer:GetMouse()
 local menu           = game:GetObjects("rbxassetid://12702460854")[1]
@@ -76,7 +78,6 @@ menu.bg.Position     = UDim2.new(0.5,-menu.bg.Size.X.Offset/2,0.5,-menu.bg.Size.
 menu.bg.pre.Text = "<font color=\"#ffffff\">Angel</font><font color=\"#df9eff\">.Girls</font> | " .. title.playerName .. " | (" .. title.userId .. ") | " .. title.gameName .. " | (" .. title.Placeid .. ") | Uid: Who?"
 menu.Parent          = game:GetService("CoreGui")
 --[[>>>>]]
-
 local function Rejoin()
     game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end
@@ -188,7 +189,51 @@ end
 
 -- Call ToggleWatermark to make the watermark visible at the start
 ToggleWatermark(false)
+--[[
+-- Keybinds UI 
+local KeybindsUI = Instance.new("ScreenGui")
+KeybindsUI.Parent = gethui()
+local KeybindsOutline = Instance.new("Frame")
+local KeybindsInner = Instance.new("Frame")
+local KeybindsTitle = Instance.new("TextLabel")
+local KeybindsContainer = Instance.new("Frame")
 
+KeybindsUI.Name = "KeybindsUI"
+KeybindsOutline.Parent = KeybindsUI
+KeybindsOutline.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+KeybindsOutline.Size = UDim2.new(0, 150, 0, 20)
+KeybindsOutline.Position = UDim2.new(0, 100, 0, 100) -- Default starting position
+
+KeybindsInner.Parent = KeybindsOutline
+KeybindsInner.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+KeybindsInner.Size = UDim2.new(1, -4, 1, -4)
+
+KeybindsTitle.Parent = KeybindsInner
+KeybindsTitle.BackgroundTransparency = 1.0
+KeybindsTitle.Text = "Keybinds"
+KeybindsTitle.Font = Enum.Font.SourceSans
+KeybindsTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeybindsTitle.TextSize = 14
+
+KeybindsContainer.Parent = KeybindsInner
+KeybindsContainer.BackgroundTransparency = 1.0
+KeybindsContainer.Size = UDim2.new(1, 0, 1, -20)
+
+-- Example for adding keybinds to the container
+local function AddKeybind(name, key)
+    local KeybindLabel = Instance.new("TextLabel")
+    KeybindLabel.Parent = KeybindsContainer
+    KeybindLabel.Size = UDim2.new(1, 0, 0, 20)
+    KeybindLabel.BackgroundTransparency = 1.0
+    KeybindLabel.Font = Enum.Font.SourceSans
+    KeybindLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    KeybindLabel.Text = name .. ": " .. key
+    KeybindLabel.TextSize = 14
+end
+
+AddKeybind("Jump", "Space")
+AddKeybind("Run", "Shift")
+]]
 --[[>>Start Of Ui>>]]
 
 
@@ -1820,45 +1865,6 @@ function library:deleteConfig()
 end
 
 
--- Assuming TweenService and InputService are already initialized
-local tweenService = game:GetService("TweenService")
-local inputService = game:GetService("UserInputService")
-
--- Define the duration of the fade animation
-local fadeDuration = 0.3
-
--- Function to create a fade effect
-local function FadeUI(element, targetTransparency, callback)
-    -- Tween the transparency property for a smooth transition
-    local tweenInfo = TweenInfo.new(fadeDuration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    
-    -- Loop through all UI elements inside the menu and apply fade
-    for _, descendant in pairs(element:GetDescendants()) do
-        if descendant:IsA("GuiObject") then
-            -- Determine the correct property to tween (for both text and background)
-            local tweenProperties = {}
-
-            -- If it has BackgroundTransparency, fade it
-            if descendant:FindFirstChild("BackgroundTransparency") then
-                tweenProperties.BackgroundTransparency = targetTransparency
-            end
-
-            -- If it has TextTransparency (like TextLabels), fade the text
-            if descendant:IsA("TextLabel") or descendant:IsA("TextButton") then
-                tweenProperties.TextTransparency = targetTransparency
-            end
-
-            -- Apply the tween to each descendant UI element
-            local tween = tweenService:Create(descendant, tweenInfo, tweenProperties)
-            tween:Play()
-
-            tween.Completed:Connect(function()
-                if callback then callback() end
-            end)
-        end
-    end
-end
-
 -- Toggle function to show/hide UI with fade effect
 local uiVisible = true
 local function ToggleUI()
@@ -1887,7 +1893,7 @@ local function UnloadUI()
     if menu then
         menu:Destroy()  -- Destroy the UI
     end
-
+ToggleWatermark(false)
     -- Clean up notifications
     for _, notification in pairs(notifications1) do
         notification:Destroy()
@@ -1911,6 +1917,8 @@ local function UnloadUI()
     -- For example, reset flags used in the library if needed.
     library.flags = {}
 end
+
+--
 
 
 
@@ -1969,6 +1977,11 @@ end
 
 --[[>>INIT UI>>]]
 
+local libsettings = {
+    fpscap = 120 -- Default FPS cap
+}
+
+-- Function to set the FPS cap
 local Legit = library:addTab("Legit")
 local visualsTab = library:addTab("Visuals")
 local miscTab = library:addTab("Misc")
@@ -1997,6 +2010,7 @@ local sections = {
     uisettings = configTab:createGroup('center', 'UI Settings');
     othersettings = configTab:createGroup('right', 'Other');
 }
+
         --[[>>                                  <<]]
 
         
@@ -2011,13 +2025,27 @@ local sections = {
                 -- You can replace the print statement with any action, like adjusting volume
             end
         })
-sections.LegitSec1:addButton({
-    text = "p diddy",
-    callback = function() UnloadUI() end
-})
 --
 
+-- Add the toggle
+sections.LegitSec2:addToggle({
+    text = "Toggle 2",
+    callback = function(state)
+        print("Toggle state: ", state)
+    end
+})
 
+
+--[[
+sections.LegitSec2:addKeybind({
+    flag = "keybindToggle",
+    toggleFlag = "toggleActive", -- Name of the toggle flag
+    key = Enum.KeyCode.G, -- Default keybind
+    callback = function(state)
+        print("Toggle state: ", state) -- Prints true or false
+    end
+})
+]]
 
 --
 sections.LegitSec1:addToggle({
@@ -2116,30 +2144,47 @@ sections.MiscSec1:addSlider({
 
 -- Add buttons and other elements to the sections
 
-sections.createconfigs:addTextbox({text = "Name", flag = "config_name"})
 
 sections.configsettings:addConfigbox({flag = 'test', values = {}})
-sections.configsettings:addButton({text = "Load", callback = library.loadConfig})
-sections.configsettings:addButton({text = "Update", callback = library.saveConfig})
-sections.configsettings:addButton({text = "Delete", callback = library.deleteConfig})
-sections.configsettings:addButton({text = "Refresh", callback = library.refreshConfigs})
+sections.configsettings:addDivider({})
+sections.configsettings:addButton({text = "Load (Does Nothing)", callback = library.loadConfig})
+sections.configsettings:addButton({text = "Update (Does Nothing)", callback = library.saveConfig})
+sections.configsettings:addButton({text = "Delete (Does Nothing)", callback = library.deleteConfig})
+sections.configsettings:addButton({text = "Refresh (Does Nothing)", callback = library.refreshConfigs})
 
-sections.uisettings:addToggle({text = "Show Game Name", flag = "show_game_name"})
+sections.createconfigs:addTextbox({text = "Name", flag = "config_name"})
 
+sections.createconfigs:addButton({text = "Create (does nothing)"})
+
+
+
+sections.uisettings:addButton({
+    text = "Unload Ui",
+    callback = function() UnloadUI() end
+})
 -- Toggle setup (integrating your toggle with the watermark toggle)
 sections.uisettings:addToggle({
-    text = "Toggle Watermark",
+    text = "Show Watermark",
     callback = function(value)
         ToggleWatermark(value)  -- Pass true/false to toggle the visibility of the watermark
     end
 })
 
+sections.uisettings:addToggle({
+    text = "Show Keybinds",
+    callback = function(value)  -- Pass true/false to toggle the visibility of the watermark
+    end
+})
+
+
+sections.uisettings:addDivider({})
+
 -- Create X Position Slider
-sections.LegitSec1:addSlider({
+sections.uisettings:addSlider({
     text = "Watermark X Position", -- The label that appears next to the slider
     flag = "WatermarkXSlider", -- A unique identifier for this slider
     min = 0, -- The minimum value for the slider
-    max = 2500, -- The maximum value for the slider
+    max = 1725, -- The maximum value for the slider
     value = 0, -- The default starting value
     callback = function(value) -- A function that gets called whenever the slider's value changes
         setWatermarkPosition(value, WatermarkOutline.Position.Y.Offset)
@@ -2148,30 +2193,69 @@ sections.LegitSec1:addSlider({
 })
 
 -- Create Y Position Slider
-sections.LegitSec1:addSlider({
+sections.uisettings:addSlider({
     text = "Watermark Y Position", -- The label that appears next to the slider
     flag = "WatermarkYSlider", -- A unique identifier for this slider
-    min = -35, -- The minimum value for the slider
-    max = 1000, -- The maximum value for the slider
+    min = 30, -- The minimum value for the slider
+    max = 940, -- The maximum value for the slider
     value = 0, -- The default starting value
     callback = function(value) -- A function that gets called whenever the slider's value changes
         setWatermarkPosition(WatermarkOutline.Position.X.Offset, value)
         print("Watermark Y Position changed to:", value) -- Custom logic here
     end
 })
-sections.uisettings:addToggle({
-    text = "Show Keybinds",
-    callback = function(Valuee) getgenv().Toggledkeybinds = Valuee end
+
+sections.uisettings:addDivider({})
+
+sections.uisettings:addSlider({
+    text = "Keybind X Position", -- The label for the slider
+    flag = "KeybindXSlider", -- A unique identifier for the slider
+    min = 0, -- The minimum value (starting position for the X axis)
+    max = 500, -- Maximum value for the slider (adjust to screen size)
+    value = 100, -- Default value
+    callback = function(value) -- Function that gets called when slider value changes
+        KeybindsOutline.Position = UDim2.new(0, value, 0, KeybindsOutline.Position.Y.Offset)
+        print("KeybindsUI position updated to X:", value)
+    end
 })
 
+sections.uisettings:addSlider({
+    text = "Keybind Y Position", -- The label for the slider
+    flag = "KeybindYSlider", -- A unique identifier for the slider
+    min = 0, -- The minimum value (starting position for the Y axis)
+    max = 500, -- Maximum value for the slider (adjust to screen size)
+    value = 100, -- Default value
+    callback = function(value) -- Function that gets called when slider value changes
+        KeybindsOutline.Position = UDim2.new(0, KeybindsOutline.Position.X.Offset, 0, value)
+        print("KeybindsUI position updated to Y:", value)
+    end
+})
+
+sections.othersettings:addButton({text = "Rejoin", callback = Rejoin})
+
+sections.configsettings:addButton({text = "Copy Game Invite"})
+sections.configsettings:addButton({text = "Rejoin Server"})
+sections.configsettings:addButton({text = "Server Hop"})
+
+
+--[[
 sections.uisettings:addTextbox({text = "Menu Title", flag = "menutitle"})
 sections.uisettings:addTextbox({text = "Domain", flag = "menudomain"})
 sections.uisettings:addColorpicker({text = "Domain Accent", ontop = true, flag = "domainaccent", color = Color3.new(1, 1, 1)})
 sections.uisettings:addColorpicker({text = "Menu Accent", ontop = true, flag = "menuaccent", color = Color3.new(1, 1, 1)})
+]]
 
-sections.othersettings:addButton({text = "Rejoin", callback = Rejoin})
-sections.othersettings:addToggle({text = "Show Keybinds", flag = "show_keybinds"})
-sections.configsettings:addButton({text = "Copy Game Invite"})
-sections.configsettings:addButton({text = "Rejoin Server"})
-sections.configsettings:addButton({text = "Server Hop"})
+--[[
+sections.uisettings:addSlider({
+    text = "Fps Cap", -- The label for the slider
+    flag = "Fpscap", -- A unique identifier for the slider
+    min = 30, -- The minimum value for the slider
+    max = 500, -- The maximum value for the slider
+    value = libsettings.fpscap, -- Default value for the slider
+    callback = function(fps) -- Function that gets called when the slider value changes
+        setfpscap(libsettings.fpscap)
+        libsettings.fpscap = fps
+    end
+})
+]]
 
