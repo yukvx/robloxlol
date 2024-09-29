@@ -1,7 +1,7 @@
 getgenv().crosshair = {
     enabled = true,
     refreshrate = 0.015,
-    mode = 'mouse', -- center, mouse, custom
+    mode = 'mouse', -- ToScreen, mouse, custom
     position = Vector2.new(0, 0), -- custom position
 
     width = 2.5,
@@ -61,7 +61,7 @@ runservice.RenderStepped:Connect(function()
         last_render = _tick
 
         local position = (
-            crosshair.mode == 'center' and camera.ViewportSize / 2 or
+            crosshair.mode == 'ToScreen' and camera.ViewportSize / 2 or
             crosshair.mode == 'mouse' and inputservice:GetMouseLocation() or
             crosshair.position
         )
