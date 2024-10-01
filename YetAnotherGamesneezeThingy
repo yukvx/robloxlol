@@ -1,9 +1,9 @@
 -- wave support maybe???
-local arrowdown = https://i.imgur.com/tVqy0nL.png
+local arrowdown = "https://i.imgur.com/tVqy0nL.png"
 
-local downgradient = https://i.imgur.com/Xsxz7Z2.png
+local downgradient = "https://i.imgur.com/Xsxz7Z2.png"
 
-local gradient = https://i.imgur.com/DzrzUt3.png
+local gradient = "https://i.imgur.com/DzrzUt3.png"
 
   -- // Variables
   local ws = game:GetService("Workspace")
