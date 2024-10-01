@@ -1,6 +1,8 @@
 -- wave support maybe???
 local arrowdown = "https://i.imgur.com/tVqy0nL.png"
 
+local arrowup = "https://i.imgur.com/SL9cbQp.png"
+
 local downgradient = "https://i.imgur.com/Xsxz7Z2.png"
 
 local gradient = "https://i.imgur.com/DzrzUt3.png"
@@ -573,7 +575,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               if window.currentContent.dropdown and window.currentContent.dropdown.open then
                   local dropdown = window.currentContent.dropdown
                   dropdown.open = not dropdown.open
-                  utility:LoadImage(dropdown.dropdown_image, "arrow_down", arrowdown)
+                  utility:LoadImage(dropdown.dropdown_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(dropdown.holder.drawings) do
                       utility:Remove(v)
@@ -588,7 +590,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               elseif window.currentContent.multibox and window.currentContent.multibox.open then
                   local multibox = window.currentContent.multibox
                   multibox.open = not multibox.open
-                  utility:LoadImage(multibox.multibox_image, "arrow_down", arrowdown)
+                  utility:LoadImage(multibox.multibox_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(multibox.holder.drawings) do
                       utility:Remove(v)
@@ -1590,7 +1592,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               if window.currentContent.dropdown and window.currentContent.dropdown.open then
                   local dropdown = window.currentContent.dropdown
                   dropdown.open = not dropdown.open
-                  utility:LoadImage(dropdown.dropdown_image, "arrow_down", arrowdown)
+                  utility:LoadImage(dropdown.dropdown_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(dropdown.holder.drawings) do
                       utility:Remove(v)
@@ -1605,7 +1607,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               elseif window.currentContent.multibox and window.currentContent.multibox.open then
                   local multibox = window.currentContent.multibox
                   multibox.open = not multibox.open
-                  utility:LoadImage(multibox.multibox_image, "arrow_down", arrowdown)
+                  utility:LoadImage(multibox.multibox_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(multibox.holder.drawings) do
                       utility:Remove(v)
@@ -3343,7 +3345,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   Visible = page.open
               }, playerList.visibleContent)
               --
-              utility:LoadImage(button_image, "arrow_down", arrowdown)
+              utility:LoadImage(button_image, "arrow_down", .. arrowdown ..)
               --
               function button:Update(Selection)
                   local Visible = Selection ~= nil and (Selection[1] ~= localplayer) or false
@@ -3393,7 +3395,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               --
               function button:Close()
                   button.open = not button.open
-                  utility:LoadImage(button_image, "arrow_down", arrowdown)
+                  utility:LoadImage(button_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(button.holder.drawings) do
                       utility:Remove(v)
@@ -3410,7 +3412,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               function button:Open()
                   window:CloseContent()
                   button.open = not button.open
-                  utility:LoadImage(button_image, "arrow_up", "https://i.imgur.com/SL9cbQp.png")
+                  utility:LoadImage(button_image, "arrow_up", .. arrowup ..)
                   --
                   local button_open_outline = utility:Create("Frame", {Vector2.new(0,21), button_outline}, {
                       Size = utility:Size(1, 0, 0, 3 + (#button.options * 19), button_outline),
@@ -3472,7 +3474,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   window.currentContent.button = button
               end
               --
-              utility:LoadImage(button_gradient, "gradient", downgradient)
+              utility:LoadImage(button_gradient, "gradient", .. downgradient ..)
               --
               library.began[#library.began + 1] = function(Input)
                   if Input.UserInputType == Enum.UserInputType.MouseButton1 and (button_outline.Visible or button.open) and window.isVisible then
@@ -3495,11 +3497,11 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                               end
                           elseif utility:MouseOverDrawing({button_outline.Position.X, button_outline.Position.Y, button_outline.Position.X + button_outline.Size.X, button_outline.Position.Y + button_outline.Size.Y}) and not window:IsOverContent() then
                               task.spawn(function()
-                                  utility:LoadImage(button_gradient, "gradientdown", gradient) 
+                                  utility:LoadImage(button_gradient, "gradientdown", .. gradient ..) 
                                   --
                                   task.wait(0.15)
                                   --
-                                  utility:LoadImage(button_gradient, "gradient", downgradient) 
+                                  utility:LoadImage(button_gradient, "gradient", .. downgradient ..) 
                               end)
                               --
                               if not button.open then
@@ -3521,7 +3523,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               playerList.buttons[#playerList.buttons + 1] = button
           end
           --
-          utility:LoadImage(list_gradient, "gradient", downgradient)
+          utility:LoadImage(list_gradient, "gradient", .. downgradient ..)
           --
           function playerList:GetSelection()
               for Index, Value in pairs(playerList.players) do
@@ -3793,7 +3795,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Color = "textcolor"
           }
           --
-          utility:LoadImage(toggle__gradient, "gradient", downgradient)
+          utility:LoadImage(toggle__gradient, "gradient", .. downgradient ..)
           --
           function toggle:Get()
               return toggle.current
@@ -3916,7 +3918,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               if transp then
                   utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
               end
-              utility:LoadImage(colorpicker__gradient, "gradient", downgradient)
+              utility:LoadImage(colorpicker__gradient, "gradient", .. downgradient ..)
               --
               function colorpicker:Set(color, transp_val)
                   if typeof(color) == "table" then
@@ -4382,7 +4384,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   Color = "textcolor"
               }
               --
-              utility:LoadImage(keybind__gradient, "gradient", downgradient)
+              utility:LoadImage(keybind__gradient, "gradient", .. downgradient ..)
               --
               function keybind:Shorten(string)
                   for i,v in pairs(shortenedInputs) do
@@ -4600,7 +4602,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                               Visible = page.open
                           }, keybind.modemenu.drawings)
                           --
-                          utility:LoadImage(keybind__gradient, "gradient", downgradient)
+                          utility:LoadImage(keybind__gradient, "gradient", .. downgradient ..)
                           --
                           for i,v in pairs({"Always", "Toggle", "On Hold", "Off Hold"}) do
                               local button_title = utility:Create("TextLabel", {Vector2.new(modemenu_frame.Size.X/2,15 * (i-1)), modemenu_frame}, {
@@ -4762,7 +4764,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Color = "textcolor"
           }
           --
-          utility:LoadImage(slider__gradient, "gradient", downgradient)
+          utility:LoadImage(slider__gradient, "gradient", .. downgradient ..)
           --
           function slider:Set(value)
               local oldval = slider.current
@@ -4889,7 +4891,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Color = "textcolor"
           }
           --
-          utility:LoadImage(button_gradient, "gradient", downgradient)
+          utility:LoadImage(button_gradient, "gradient", .. downgradient ..)
           --
           library.began[#library.began + 1] = function(Input)
               if Input.UserInputType == Enum.UserInputType.MouseButton1 and button_outline.Visible and window.isVisible and utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + button.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + button.axis + 20}) and not window:IsOverContent() then
@@ -4898,7 +4900,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                       --
                       task.wait(0.15)
                       --
-                      utility:LoadImage(button_gradient, "gradient", downgradient) 
+                      utility:LoadImage(button_gradient, "gradient", .. downgradient ..) 
                   end)
                   --
                   callback()
@@ -4997,7 +4999,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Color = textbox.current == "" and (placeholder and "textdark") or "textcolor"
           }
           --
-          utility:LoadImage(textbox_gradient, "gradient", downgradient)
+          utility:LoadImage(textbox_gradient, "gradient", .. downgradient ..)
           --
           function textbox:Get()
               return textbox.current
@@ -5026,11 +5028,11 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               if Input.UserInputType == Enum.UserInputType.MouseButton1 and textbox_outline.Visible and window.isVisible then
                   if reactive and utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + textbox.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + textbox.axis + 20}) and not window:IsOverContent() then
                       task.spawn(function()
-                          utility:LoadImage(textbox_gradient, "gradientdown", gradient) 
+                          utility:LoadImage(textbox_gradient, "gradientdown", .. gradient ..) 
                           --
                           task.wait(0.15)
                           --
-                          utility:LoadImage(textbox_gradient, "gradient", downgradient) 
+                          utility:LoadImage(textbox_gradient, "gradient", .. downgradient ..) 
                       end)
                       --
                       if not (window.currentContent.textbox and window.currentContent.textbox.Name == identifier) then
@@ -5097,7 +5099,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                               Color = textbox.current == "" and (placeholder and "textdark") or "textcolor"
                           }
                           --
-                          utility:LoadImage(textbox_gradient, "gradient", downgradient)
+                          utility:LoadImage(textbox_gradient, "gradient", .. downgradient ..)
                       end)
                       --
                       setclipboard(textbox.current)
@@ -5187,16 +5189,16 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   Color = "textcolor"
               }
               --
-              utility:LoadImage(button_gradient, "gradient", downgradient)
+              utility:LoadImage(button_gradient, "gradient", .. downgradient ..)
               --
               library.began[#library.began + 1] = function(Input)
                   if Input.UserInputType == Enum.UserInputType.MouseButton1 and button_outline.Visible and window.isVisible and utility:MouseOverDrawing({section.section_frame.Position.X + (i == 2 and (section.section_frame.Size.X/2) or 0), section.section_frame.Position.Y + button.axis, section.section_frame.Position.X + section.section_frame.Size.X - (i == 1 and (section.section_frame.Size.X/2) or 0), section.section_frame.Position.Y + button.axis + 20}) and not window:IsOverContent() then
                       task.spawn(function()
-                          utility:LoadImage(button_gradient, "gradientdown", gradient) 
+                          utility:LoadImage(button_gradient, "gradientdown", .. gradient .. ) 
                           --
                           task.wait(0.15)
                           --
-                          utility:LoadImage(button_gradient, "gradient", downgradient) 
+                          utility:LoadImage(button_gradient, "gradient", .. downgradient ..) 
                       end)
                       --
                       buttons[i][2]()
@@ -5300,8 +5302,8 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Visible = page.open
           }, section.visibleContent);dropdown["dropdown_image"] = dropdown_image
           --
-          utility:LoadImage(dropdown_image, "arrow_down", arrowdown)
-          utility:LoadImage(dropdown__gradient, "gradient", downgradient)
+          utility:LoadImage(dropdown_image, "arrow_down", .. arrowdown ..)
+          utility:LoadImage(dropdown__gradient, "gradient", .. downgradient ..)
           --
           if max then
               local lastupdate = dropdown.scrollindex
@@ -5375,17 +5377,17 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                       end
                   elseif utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + dropdown.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + dropdown.axis + (name and (15 + 20) or (20))}) and not window:IsOverContent() then
                       task.spawn(function()
-                          utility:LoadImage(dropdown__gradient, "gradientdown", gradient) 
+                          utility:LoadImage(dropdown__gradient, "gradientdown", .. gradient ..) 
                           --
                           task.wait(0.15)
                           --
-                          utility:LoadImage(dropdown__gradient, "gradient", downgradient) 
+                          utility:LoadImage(dropdown__gradient, "gradient", .. downgradient ..) 
                       end)
                       --
                       if not dropdown.open then
                           window:CloseContent()
                           dropdown.open = not dropdown.open
-                          utility:LoadImage(dropdown_image, "arrow_up", "https://i.imgur.com/SL9cbQp.png")
+                          utility:LoadImage(dropdown_image, "arrow_up", .. arrowup ..)
                           --
                           local dropdown_open_outline = utility:Create("Frame", {Vector2.new(0,19), dropdown_outline}, {
                               Size = utility:Size(1, 0, 0, 3 + ((max and max or #dropdown.options) * 19), dropdown_outline),
@@ -5471,7 +5473,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                           window.currentContent.dropdown = dropdown
                       else
                           dropdown.open = not dropdown.open
-                          utility:LoadImage(dropdown_image, "arrow_down", arrowdown)
+                          utility:LoadImage(dropdown_image, "arrow_down", .. arrowdown ..)
                           --
                           for i,v in pairs(dropdown.holder.drawings) do
                               utility:Remove(v)
@@ -5487,7 +5489,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   else
                       if dropdown.open then
                           dropdown.open = not dropdown.open
-                          utility:LoadImage(dropdown_image, "arrow_down", arrowdown)
+                          utility:LoadImage(dropdown_image, "arrow_down", .. arrowdown ..)
                           --
                           for i,v in pairs(dropdown.holder.drawings) do
                               utility:Remove(v)
@@ -5503,7 +5505,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   end
               elseif Input.UserInputType == Enum.UserInputType.MouseButton1 and dropdown.open then
                   dropdown.open = not dropdown.open
-                  utility:LoadImage(dropdown_image, "arrow_down", arrowdown)
+                  utility:LoadImage(dropdown_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(dropdown.holder.drawings) do
                       utility:Remove(v)
@@ -5652,8 +5654,8 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Visible = page.open
           }, section.visibleContent);multibox["multibox_image"] = multibox_image
           --
-          utility:LoadImage(multibox_image, "arrow_down", arrowdown)
-          utility:LoadImage(multibox__gradient, "gradient", downgradient)
+          utility:LoadImage(multibox_image, "arrow_down", .. arrowdown ..)
+          utility:LoadImage(multibox__gradient, "gradient", .. downgradient ..)
           --
           function multibox:Update()
               if multibox.open and multibox.holder.inline then
@@ -5727,17 +5729,17 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                       end
                   elseif utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + multibox.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + multibox.axis + (name and 15 or 0) + 20}) and not window:IsOverContent() then
                       task.spawn(function()
-                          utility:LoadImage(multibox__gradient, "gradientdown", gradient) 
+                          utility:LoadImage(multibox__gradient, "gradientdown", .. gradient ..) 
                           --
                           task.wait(0.15)
                           --
-                          utility:LoadImage(multibox__gradient, "gradient", downgradient) 
+                          utility:LoadImage(multibox__gradient, "gradient", .. downgradient ..) 
                       end)
                       --
                       if not multibox.open then
                           window:CloseContent()
                           multibox.open = not multibox.open
-                          utility:LoadImage(multibox_image, "arrow_up", "https://i.imgur.com/SL9cbQp.png")
+                          utility:LoadImage(multibox_image, "arrow_up", .. arrowup ..)
                           --
                           local multibox_open_outline = utility:Create("Frame", {Vector2.new(0,19), multibox_outline}, {
                               Size = utility:Size(1, 0, 0, 3 + (#multibox.options * 19), multibox_outline),
@@ -5802,7 +5804,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                           window.currentContent.multibox = multibox
                       else
                           multibox.open = not multibox.open
-                          utility:LoadImage(multibox_image, "arrow_down", arrowdown)
+                          utility:LoadImage(multibox_image, "arrow_down", .. arrowdown ..)
                           --
                           for i,v in pairs(multibox.holder.drawings) do
                               utility:Remove(v)
@@ -5818,7 +5820,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   else
                       if multibox.open then
                           multibox.open = not multibox.open
-                          utility:LoadImage(multibox_image, "arrow_down", arrowdown)
+                          utility:LoadImage(multibox_image, "arrow_down", .. arrowdown ..)
                           --
                           for i,v in pairs(multibox.holder.drawings) do
                               utility:Remove(v)
@@ -5834,7 +5836,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                   end
               elseif Input.UserInputType == Enum.UserInputType.MouseButton1 and multibox.open then
                   multibox.open = not multibox.open
-                  utility:LoadImage(multibox_image, "arrow_down", arrowdown)
+                  utility:LoadImage(multibox_image, "arrow_down", .. arrowdown ..)
                   --
                   for i,v in pairs(multibox.holder.drawings) do
                       utility:Remove(v)
@@ -5948,7 +5950,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               Color = "textcolor"
           }
           --
-          utility:LoadImage(keybind__gradient, "gradient", downgradient)
+          utility:LoadImage(keybind__gradient, "gradient", .. downgradient ..)
           --
           function keybind:Shorten(string)
               for i,v in pairs(shortenedInputs) do
@@ -6162,7 +6164,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
                           Visible = page.open
                       }, keybind.modemenu.drawings)
                       --
-                      utility:LoadImage(keybind__gradient, "gradient", downgradient)
+                      utility:LoadImage(keybind__gradient, "gradient", .. downgradient ..)
                       --
                       for i,v in pairs({"Always", "Toggle", "On Hold", "Off Hold"}) do
                           local button_title = utility:Create("TextLabel", {Vector2.new(modemenu_frame.Size.X/2,15 * (i-1)), modemenu_frame}, {
@@ -6297,7 +6299,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
           if transp then
               utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
           end
-          utility:LoadImage(colorpicker__gradient, "gradient", downgradient)
+          utility:LoadImage(colorpicker__gradient, "gradient", .. downgradient ..)
           --
           function colorpicker:Set(color, transp_val)
               if typeof(color) == "table" then
@@ -6741,7 +6743,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               if transp then
                   utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
               end
-              utility:LoadImage(colorpicker__gradient, "gradient", downgradient)
+              utility:LoadImage(colorpicker__gradient, "gradient", .. downgradient ..)
               --
               function colorpicker:Set(color, transp_val)
                   if typeof(color) == "table" then
@@ -7220,7 +7222,7 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
               list.buttons[i] = config_title
           end
           --
-          utility:LoadImage(list_gradient, "gradient", downgradient)
+          utility:LoadImage(list_gradient, "gradient", .. downgradient ..)
           --
           function list:UpdateScroll()
               if (#list.options - list.max) > 0 then
