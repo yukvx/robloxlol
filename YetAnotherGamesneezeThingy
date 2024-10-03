@@ -1,11 +1,11 @@
 -- wave support maybe???
-local arrowdown = "https://i.imgur.com/tVqy0nL.png"
+local arrowdown = nil
 
-local arrowup = "https://i.imgur.com/SL9cbQp.png"
+local arrowup = nil
 
-local downgradient = "https://i.imgur.com/Xsxz7Z2.png"
+local downgradient = nil
 
-local gradient = "https://i.imgur.com/DzrzUt3.png"
+local gradient = nil
 
   -- // Variables
   local ws = game:GetService("Workspace")
@@ -7318,3 +7318,4 @@ local gradient = "https://i.imgur.com/DzrzUt3.png"
       end
   end
   return library, utility, library.pointers, theme
+-- im starting to lose hope w wave tbh
