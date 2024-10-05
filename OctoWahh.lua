@@ -1,5 +1,6 @@
 --[[
 octohook ui? idk
+wave i fucking hate you you count commented lines stil for ur shitty http request limit
 ]]
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
@@ -2602,11 +2603,9 @@ local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.Place
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
                                 utility:LoadImage(colorpicker_open_transparency_image, "transp", images["transparbar"])
-                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/VcMAYjL.png")
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
-                           -- non existant utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
                             utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["huepicker"])
                             --
                             window.currentContent.frame = colorpicker_open_inline
