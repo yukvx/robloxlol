@@ -6,7 +6,8 @@ local images = {
     ["gradient"] = fakevar,
     ["gradientdown"] = fakevar,
     ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar
+    ["arrowup"] = fakevar,
+    ["wtvwave"] = "https://i.imgur.com/wpDRqVH.png"
 }
 
 -- // Variables
@@ -7302,7 +7303,8 @@ do
         return list
     end
 end
-utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
+
+utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
 
