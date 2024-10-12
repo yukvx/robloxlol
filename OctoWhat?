@@ -1,6 +1,5 @@
 --[[
 octohook ui? idk
-wave i fucking hate you you count commented lines stil for ur shitty http request limit
 ]]
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
@@ -8,28 +7,16 @@ local rs = game:GetService("RunService")
 local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
---[[ kys wave 🤑
+
 local images = {
-    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png";
-    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png";
-    ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png";
-    ["arrowup"] = "https://i.imgur.com/SL9cbQp.png";
-    ["valsat"] = "https://i.imgur.com/wpDRqVH.png";
-    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png";
-    ["transparbar"] = "https://i.imgur.com/ncssKbH.png";
-    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png";
-}
-]]
-local fakevar = print() -- ????
-local images = {
-    ["gradient"] = fakevar
-    ["gradientdown"] = fakevar
-    ["arrowdown"] = fakevar
-    ["arrowup"] = fakevar
-    ["valsat"] = fakevar
-    ["huepicker"] = fakevar
-    ["transparbar"] = fakevar
-    ["colorpickerstuffagain"] = fakevar
+    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
+    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
+    ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png",
+    ["arrowup"] = "https://i.imgur.com/SL9cbQp.png",
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
+    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
+    ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
+    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
 }
 --[[
 images["gradient"]
@@ -41,7 +28,6 @@ images["huepicker"]
 images["transparbar"]
 images["colorpickerstuffagain"]
 ]]  
-
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
 -- UI Variables
@@ -2615,9 +2601,11 @@ local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.Place
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
                                 utility:LoadImage(colorpicker_open_transparency_image, "transp", images["transparbar"])
+                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/VcMAYjL.png")
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
+                           -- non existant utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
                             utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["huepicker"])
                             --
                             window.currentContent.frame = colorpicker_open_inline
