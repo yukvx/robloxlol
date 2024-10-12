@@ -10,7 +10,15 @@ local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 local fakevar
 
---https://i.imgur.com/IIPee2A.png
+local images = {
+    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
+    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
+    ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png",
+    ["arrowup"] = "https://i.imgur.com/SL9cbQp.png",  
+    ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
+    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
+}
 
 local gradientInstances = {
     [1] = keybind__gradient,
@@ -25,22 +33,18 @@ local gradientInstances = {
     [10] = configLoader_gradient,
 }
 
-
 local function loadImageSafe(instance, imageName, imageLink)
-    if imageLink ~= fakevar then  -- Only load if it's not fakevar
+    if imageLink ~= fakevar then
         utility:LoadImage(instance, imageName, imageLink)
     else
-        print("Skipped loading " .. imageName .. " for instance: " .. tostring(instance) .. " as it's a placeholder (fakevar).")
+        print("Skipped loading " .. imageName .. " for: " .. tostring(instance) .. "(fakevar / fake url var)")
     end
 end
 
 
-for i = 1, #gradientInstances do
-    loadImageSafe(gradientInstances[i], "gradient", images["gradient"])
-end
-
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
+
 -- UI Variables
 local library = {
     drawings = {},
