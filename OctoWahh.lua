@@ -12,12 +12,12 @@ local fakevar
 local images = {
     ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
     ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
-    ["valsat"] = "https://i.imgur.com/wpDRqVH.pn",
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
     ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
-    ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar,
+    ["arrowdown"] = fakevar.
+    ["arrowup"] = fakevar.
     ["transparbar"] = fakevar,
-    ["colorpickerstuffagain"] = fakevar
+    ["colorpickerstuffagain"] = fakevar,
 }
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
