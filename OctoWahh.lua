@@ -14,8 +14,8 @@ local images = {
     ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
     ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
     ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
-    ["arrowdown"] = fakevar.
-    ["arrowup"] = fakevar.
+    ["arrowdown"] = fakevar,
+    ["arrowup"] = fakevar,
     ["transparbar"] = fakevar,
     ["colorpickerstuffagain"] = fakevar,
 }
