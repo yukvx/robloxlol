@@ -2953,7 +2953,7 @@ do
                 window.currentContent.button = button
             end
             --
-            utility:LoadImage(button_gradient, "gradient", "https://i.imgur.com/DzrzUt3.png")
+            utility:LoadImage(button_gradient, "gradient")
             --
             library.began[#library.began + 1] = function(Input)
                 if Input.UserInputType == Enum.UserInputType.MouseButton1 and (button_outline.Visible or button.open) and window.isVisible then
@@ -2976,11 +2976,11 @@ do
                             end
                         elseif utility:MouseOverDrawing({button_outline.Position.X, button_outline.Position.Y, button_outline.Position.X + button_outline.Size.X, button_outline.Position.Y + button_outline.Size.Y}) and not window:IsOverContent() then
                             task.spawn(function()
-                                utility:LoadImage(button_gradient, "gradientdown", "https://i.imgur.com/Xsxz7Z2.png") 
+                                utility:LoadImage(button_gradient, "gradientdown") 
                                 --
                                 task.wait(0.15)
                                 --
-                                utility:LoadImage(button_gradient, "gradient", "https://i.imgur.com/DzrzUt3.png") 
+                                            utility:LoadImage(button_gradient, "gradient")
                             end)
                             --
                             if not button.open then
@@ -3694,9 +3694,7 @@ do
                                     Color = Color3.fromHSV(0, 0, 1 - colorpicker.current[4]),
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
-                                utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/ncssKbH.png")
-                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/VcMAYjL.png")
-                            end
+                                utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/ncssKbH.png")                            end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
                             utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
@@ -3863,8 +3861,7 @@ do
                 Color = "textcolor"
             }
             --
-            utility:LoadImage(keybind__gradient, "gradient", "https://i.imgur.com/DzrzUt3.png")
-            --
+           --
             function keybind:Shorten(string)
                 for i,v in pairs(shortenedInputs) do
                     string = string.gsub(string, i, v)
@@ -4379,7 +4376,7 @@ do
                     --
                     task.wait(0.15)
                     --
-                    utility:LoadImage(button_gradient, "gradient", "https://i.imgur.com/DzrzUt3.png") 
+                                utility:LoadImage(button_gradient, "gradient")
                 end)
                 --
                 callback()
@@ -4507,7 +4504,7 @@ do
             if Input.UserInputType == Enum.UserInputType.MouseButton1 and textbox_outline.Visible and window.isVisible then
                 if reactive and utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + textbox.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + textbox.axis + 20}) and not window:IsOverContent() then
                     task.spawn(function()
-                        utility:LoadImage(textbox_gradient, "gradientdown", "https://i.imgur.com/Xsxz7Z2.png") 
+                                                        utility:LoadImage(button_gradient, "gradientdown") 
                         --
                         task.wait(0.15)
                         --
@@ -4567,7 +4564,7 @@ do
                             Color = "accent"
                         }
                         --
-                        utility:LoadImage(textbox_gradient, "gradientdown", "https://i.imgur.com/Xsxz7Z2.png") 
+                                                        utility:LoadImage(button_gradient, "gradientdown") 
                         --
                         task.wait(0.15)
                         --
@@ -4677,7 +4674,7 @@ do
                         --
                         task.wait(0.15)
                         --
-                        utility:LoadImage(button_gradient, "gradient", "https://i.imgur.com/DzrzUt3.png") 
+                                    utility:LoadImage(button_gradient, "gradient")
                     end)
                     --
                     buttons[i][2]()
