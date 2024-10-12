@@ -10,8 +10,8 @@ local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 local fakevar 
 local images = {
-    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png"
-    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png"
+    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
+    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
     ["valsat"] = "https://i.imgur.com/wpDRqVH.pn",
