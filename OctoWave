@@ -1,7 +1,6 @@
 
 --[[
 octohook ui? idk
-we reverted back to the stone age bc of wave is horse shit 🤑🤑🤑
 ]]
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
@@ -12,8 +11,8 @@ local stats = game:GetService("Stats")
 
 local imagesettings = {
     ["useallgradients"] = false,
-    ["buttongradients"] = false,
-    ["slidergradients"] = false
+    ["buttongradients"] = true,
+    ["slidergradients"] = true
 }
 
 local fakevar
@@ -399,10 +398,23 @@ if imagesettings["useallgradients"] then
     utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
     utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
 elseif imagesettings["buttongradients"] then
+
     utility:LoadImage(button_gradient, "gradient", images["gradient"])
     utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
+
+    utility:LoadImage(slider__gradient, "gradient", fakevar)
+    utility:LoadImage(listbox_gradient, "gradient", fakevar)
+    utility:LoadImage(configLoader_gradient, "gradient", fakevar)
+
 elseif imagesettings["slidergradients"] then
-    utility:LoadImage(slider__gradient, "gradient", images["gradient"])
+
+    utility:LoadImage(slider__gradient, "gradient", fakevar)
+
+    utility:LoadImage(toggle__gradient, "gradient", Fakevar)
+    utility:LoadImage(button_gradient, "gradient", fakevar)
+    utility:LoadImage(listbox_gradient, "gradient", fakevar)
+    utility:LoadImage(configLoader_gradient, "gradient", fakevar)
+
 end
 
 -- god I fucking hate this executor its so horse shit
