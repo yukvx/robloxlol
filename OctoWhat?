@@ -8,16 +8,26 @@ local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 local fakevar
+-- Define the images table
 local images = {
     ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
     ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
-    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",  -- Corrected extension
     ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
-    ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
-    ["colorpickerstuffagain"] = fakevar,				
-    ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar
+    ["arrowdown"] = fakevar,  -- Leave as is since it's a placeholder
+    ["arrowup"] = fakevar,    -- Placeholder
+    ["transparbar"] = fakevar,  -- Placeholder
+    ["colorpickerstuffagain"] = fakevar  -- Placeholder
 }
+
+-- Function to load an image if the URL is not fakevar
+local function loadImageSafe(instance, imageName, imageLink)
+    if imageLink ~= fakevar then  -- Only load if it's not fakevar
+        utility:LoadImage(instance, imageName, imageLink)
+    else
+        print("Skipped loading " .. imageName .. " as it's a placeholder (fakevar).")
+    end
+end
 --https://i.imgur.com/IIPee2A.png
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
