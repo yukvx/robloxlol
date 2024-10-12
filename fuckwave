@@ -7304,7 +7304,7 @@ do
     end
 end
 
-utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
+--utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
 
