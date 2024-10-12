@@ -435,8 +435,6 @@ do
     end
 end
 
-utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
-
 -- // Library Functions
 do
     library.__index = library
@@ -7304,4 +7302,7 @@ do
         return list
     end
 end
+utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
+
 return library, utility, library.pointers, theme
+
