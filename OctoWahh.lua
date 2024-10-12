@@ -5522,6 +5522,8 @@ local m_thread = task do
 
     setreadonly(m_thread, true)
 end
+--[[
     utility:LoadImage(listbox_gradient, "gradient", gradient)
     utility:LoadImage(configLoader_gradient, "gradient", gradient)
+]]
 return library, library.pointers, theme -- utility
