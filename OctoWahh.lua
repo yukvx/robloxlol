@@ -10,8 +10,6 @@ local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 
-local gradient = "https://i.imgur.com/Xsxz7Z2.png",
-
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
 -- UI Variables
@@ -5462,35 +5460,6 @@ local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.Place
         return configLoader
     end
 end
--- // Init
---[[do
-    local title_string = "Splix - Private | %A, %B"
-    local day = os.date(" %d", os.time())
-    local second_string = ", %Y."
-    title_string = os.date(title_string, os.time())..day..utility:GetSubPrefix(day)..os.date(second_string, os.time())
-    --
-    local lib = library:New({name = title_string})
-    --
-    local test = lib:Page({name = "test"})
-    local sucky = lib:Page({name = "sucky"})
-
-    local testMain = test:Section({name = "Main"})
-
-    local list = {}
-    for i = 1, 0 do
-        list[i] = tostring(i)
-    end
-    
-    local listbox = testMain:Listbox({Pointer = "Config/Selected", List = list})
-    testMain:Button({Name = "Delete", Confirmation = true, Callback = function() end})
-	testMain:Textbox({Pointer = "Config/Name", PlaceHolder = "Config Name", Text = "", Middle = true, ResetOnFocus = false})
-
-    lib.uibind = Enum.KeyCode.Home
-    lib:Initialize()
-
-    print(lib:GetConfig())
-end]]
---
 
 function library:UpdateColor(ColorType, ColorValue)
     local ColorType = ColorType:lower()
@@ -5522,8 +5491,5 @@ local m_thread = task do
 
     setreadonly(m_thread, true)
 end
---[[
-    utility:LoadImage(listbox_gradient, "gradient", gradient)
-    utility:LoadImage(configLoader_gradient, "gradient", gradient)
-]]
+
 return library, library.pointers, theme -- utility
