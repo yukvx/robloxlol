@@ -5530,5 +5530,6 @@ local m_thread = task do
 
     setreadonly(m_thread, true)
 end
-utility:LoadImage(button_gradient, "gradient", images["gradient"]
+    utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
+    utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
 return library, library.pointers, theme -- utility
