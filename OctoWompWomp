@@ -1,6 +1,7 @@
 
 --[[
 octohook ui? idk
+we reverted back to the stone age bc of wave is horse shit 🤑🤑🤑
 ]]
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
@@ -8,8 +9,14 @@ local rs = game:GetService("RunService")
 local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
-local fakevar
 
+local imagesettings = {
+    ["useallgradients"] = false,
+    ["buttongradients"] = true,
+    ["slidergradients"] = true
+}
+
+local fakevar
 local images = {
     ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
     ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
@@ -384,13 +391,20 @@ do
         return Text:sub(0, Max)
     end
 end
-
 -- very cave man like (wave 🤑)
-utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
-utility:LoadImage(slider__gradient, "gradient", images["gradient"])
-utility:LoadImage(button_gradient, "gradient", images["gradient"])
-utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
-utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
+if imagesettings["useallgradients"] then
+    utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
+    utility:LoadImage(slider__gradient, "gradient", images["gradient"])
+    utility:LoadImage(button_gradient, "gradient", images["gradient"])
+    utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
+    utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
+elseif imagesettings["buttongradients"] then
+    utility:LoadImage(button_gradient, "gradient", images["gradient"])
+    utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
+elseif imagesettings["slidergradients"] then
+    utility:LoadImage(slider__gradient, "gradient", images["gradient"])
+end
+
 -- god I fucking hate this executor its so horse shit
 
 -- // Library Functions
