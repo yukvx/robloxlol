@@ -10,16 +10,15 @@ local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 local fakevar 
 local images = {
-    ["gradient"] = fakevar,
-    ["gradientdown"] = fakevar,
+    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png"
+    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png"
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
-    ["valsat"] = fakevar,
-    ["huepicker"] = fakevar,
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.pn",
+    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
     ["transparbar"] = fakevar,
     ["colorpickerstuffagain"] = fakevar
 }
-
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
 -- UI Variables
