@@ -9,17 +9,9 @@ local rs = game:GetService("RunService")
 local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
-local fakevar 
-local images = {
-    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
-    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
-    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
-    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
-    ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar,
-    ["transparbar"] = fakevar,
-    ["colorpickerstuffagain"] = fakevar,
-}
+
+local gradient = "https://i.imgur.com/Xsxz7Z2.png",
+
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
 -- UI Variables
@@ -5530,6 +5522,6 @@ local m_thread = task do
 
     setreadonly(m_thread, true)
 end
-    utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
-    utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
+    utility:LoadImage(listbox_gradient, "gradient", gradient)
+    utility:LoadImage(configLoader_gradient, "gradient", gradient)
 return library, library.pointers, theme -- utility
