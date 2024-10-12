@@ -1,6 +1,7 @@
 --[[
 octohook ui? idk
 wave i fucking hate you you count commented lines stil for ur shitty http request limit
+-- very cave man like (wave 🤑)
 ]]
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
