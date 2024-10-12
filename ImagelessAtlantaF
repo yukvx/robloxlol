@@ -7,6 +7,8 @@ local images = {
     ["gradientdown"] = fakevar,
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
+    ["clrptrans"] = "https://i.imgur.com/IIPee2A.png"
+
 }
 -- // Variables
 local ws = game:GetService("Workspace")
@@ -3918,7 +3920,7 @@ do
             }, section.visibleContent)
             --
             if transp then
-                utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
+                utility:LoadImage(colorpicker__transparency, "cptransp", images["clrptrans"])
             end
             utility:LoadImage(colorpicker__gradient, "gradient", images["gradient"])
             --
@@ -6287,7 +6289,7 @@ do
         }
         --
         if transp then
-            utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
+            utility:LoadImage(colorpicker__transparency, "cptransp", images["clrptrans"])
         end
         utility:LoadImage(colorpicker__gradient, "gradient", images["gradient"])
         --
@@ -6582,7 +6584,6 @@ do
                         end
                         --
                         utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
-                        utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
                         utility:LoadImage(colorpicker_open_huepicker_image, "hue", "https://i.imgur.com/iEOsHFv.png")
                         --
                         window.currentContent.frame = colorpicker_open_inline
@@ -6731,7 +6732,7 @@ do
             }, section.visibleContent)
             --
             if transp then
-                utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
+                utility:LoadImage(colorpicker__transparency, "cptransp", images["clrptrans"])
             end
             utility:LoadImage(colorpicker__gradient, "gradient", images["gradient"])
             --
@@ -7023,11 +7024,9 @@ do
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
                                 utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/ncssKbH.png")
-                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/VcMAYjL.png")
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
-                            utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
                             utility:LoadImage(colorpicker_open_huepicker_image, "hue", "https://i.imgur.com/iEOsHFv.png")
                             --
                             window.currentContent.frame = colorpicker_open_inline
