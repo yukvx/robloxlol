@@ -19,28 +19,18 @@ local images = {
     ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
     ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
 }
-
-local gradientInstances = {
-    [1] = keybind__gradient,
-    [2] = notify__gradient,
-    [3] = toggle__gradient,
-    [4] = slider__gradient,
-    [5] = button_gradient,
-    [6] = dropdown__gradient,
-    [7] = multibox__gradient,
-    [8] = colorpicker__gradient,
-    [9] = listbox_gradient,
-    [10] = configLoader_gradient,
-}
-
-local function loadImageSafe(instance, imageName, imageLink)
-    if imageLink ~= fakevar then
-        utility:LoadImage(instance, imageName, imageLink)
-    else
-        print("Skipped loading " .. imageName .. " for: " .. tostring(instance) .. "(fakevar / fake url var)")
-    end
-end
-
+-- very cave man like (wave 🤑)
+utility:LoadImage(notify__gradient, "gradient", images["gradient"])
+utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
+utility:LoadImage(slider__gradient, "gradient", images["gradient"])
+utility:LoadImage(button_gradient, "gradient", images["gradient"])
+utility:LoadImage(dropdown__gradient, "gradient", images["gradient"])
+utility:LoadImage(multibox__gradient, "gradient", images["gradient"])
+utility:LoadImage(keybind__gradient, "gradient", images["gradient"])
+utility:LoadImage(colorpicker__gradient, "gradient", images["gradient"])
+utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
+utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
+-- god I fucking hate this executor its so horse shit
 
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
