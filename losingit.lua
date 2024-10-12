@@ -12,10 +12,10 @@ local fakevar
 local images = {
     ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png",
     ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png",
-    ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar,
     ["valsat"] = "https://i.imgur.com/wpDRqVH.pn",
     ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
+    ["arrowdown"] = fakevar,
+    ["arrowup"] = fakevar,
     ["transparbar"] = fakevar,
     ["colorpickerstuffagain"] = fakevar
 }
