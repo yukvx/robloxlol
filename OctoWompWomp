@@ -17,7 +17,7 @@ local images = {
     ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png",
     ["arrowup"] = "https://i.imgur.com/SL9cbQp.png",  
     ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
-    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
+    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png"
 }
 
 
