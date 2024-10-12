@@ -10,6 +10,15 @@ local hs = game:GetService("HttpService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 
+local images = {
+    ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png",
+    ["arrowup"] = "https://i.imgur.com/SL9cbQp.png",  
+    ["valsat"] = "https://i.imgur.com/wpDRqVH.png",
+    ["huepicker"] = "https://i.imgur.com/iEOsHFv.png",
+    ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
+    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
+}
+
 -- budget ver of protect gui?! (fuck u wave i despise you)
 local function getexec() return identifyexecutor() end; local function protectGui() local b=getexec() if syn and syn.protect_gui then syn.protect_gui() elseif gethui then return gethui() else return nil end end
 -- UI Variables
