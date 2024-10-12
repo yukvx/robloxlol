@@ -17,7 +17,7 @@ local images = {
     ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png",
     ["arrowup"] = "https://i.imgur.com/SL9cbQp.png",  
     ["transparbar"] = "https://i.imgur.com/ncssKbH.png",
-    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png"
+    ["colorpickerstuffagain"] = "https://i.imgur.com/IIPee2A.png",
 }
 
 
@@ -386,14 +386,9 @@ do
 end
 
 -- very cave man like (wave 🤑)
-utility:LoadImage(notify__gradient, "gradient", images["gradient"])
 utility:LoadImage(toggle__gradient, "gradient", images["gradient"])
 utility:LoadImage(slider__gradient, "gradient", images["gradient"])
 utility:LoadImage(button_gradient, "gradient", images["gradient"])
-utility:LoadImage(dropdown__gradient, "gradient", images["gradient"])
-utility:LoadImage(multibox__gradient, "gradient", images["gradient"])
-utility:LoadImage(keybind__gradient, "gradient", images["gradient"])
-utility:LoadImage(colorpicker__gradient, "gradient", images["gradient"])
 utility:LoadImage(listbox_gradient, "gradient", images["gradient"])
 utility:LoadImage(configLoader_gradient, "gradient", images["gradient"])
 -- god I fucking hate this executor its so horse shit
