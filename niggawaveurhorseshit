@@ -7,7 +7,7 @@ local images = {
     ["gradientdown"] = fakevar,
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
-    ["clrptrans"] = "https://i.imgur.com/IIPee2A.png"
+    ["clrptrans"] = fakevar
 
 }
 -- // Variables
