@@ -12,8 +12,8 @@ local stats = game:GetService("Stats")
 
 local imagesettings = {
     ["useallgradients"] = false,
-    ["buttongradients"] = true,
-    ["slidergradients"] = true
+    ["buttongradients"] = false,
+    ["slidergradients"] = false
 }
 
 local fakevar
