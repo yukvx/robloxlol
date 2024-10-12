@@ -3,10 +3,10 @@
 -- i fucking hate you wave
 
 local images = {
-    [gradient] = "https://i.imgur.com/Xsxz7Z2.png";
-    [gradientdown] = "https://i.imgur.com/DzrzUt3.png";
-    [arrowdown] = "https://i.imgur.com/tVqy0nL.png";
-    [arrowup] = "https://i.imgur.com/SL9cbQp.png";
+    ["gradient"] = "https://i.imgur.com/Xsxz7Z2.png";
+    ["gradientdown"] = "https://i.imgur.com/DzrzUt3.png";
+    ["arrowdown"] = "https://i.imgur.com/tVqy0nL.png";
+    ["arrowup"] = "https://i.imgur.com/SL9cbQp.png";
 }
 -- // Variables
 local ws = game:GetService("Workspace")
