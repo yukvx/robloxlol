@@ -6,8 +6,7 @@ local images = {
     ["gradient"] = fakevar,
     ["gradientdown"] = fakevar,
     ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar,
-    ["clrptrans"] = fakevar
+    ["arrowup"] = fakevar
 
 }
 -- // Variables
@@ -435,6 +434,10 @@ do
         end
     end
 end
+
+utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
+utility:LoadImage(colorpicker_open_huepicker_image, "hue", "https://i.imgur.com/iEOsHFv.png")
+utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/ncssKbH.png")
 
 -- // Library Functions
 do
