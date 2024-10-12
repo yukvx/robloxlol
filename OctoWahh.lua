@@ -382,6 +382,7 @@ do
         return Text:sub(0, Max)
     end
 end
+utility:LoadImage(button_gradient, "gradient", images["gradient"]
 -- // Library Functions
 do
     library.__index = library
@@ -521,7 +522,6 @@ do
                     end
                 end
             end) then
-                print("BROOOOOO WHAT")
                 table.foreach(v, print)
             end
             --
