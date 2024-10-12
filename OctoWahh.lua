@@ -382,7 +382,7 @@ do
         return Text:sub(0, Max)
     end
 end
-utility:LoadImage(button_gradient, "gradient", images["gradient"]
+
 -- // Library Functions
 do
     library.__index = library
@@ -5530,5 +5530,5 @@ local m_thread = task do
 
     setreadonly(m_thread, true)
 end
-
+utility:LoadImage(button_gradient, "gradient", images["gradient"]
 return library, library.pointers, theme -- utility
