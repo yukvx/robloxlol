@@ -7255,6 +7255,10 @@ do
             list:Refresh()
         end
         --
+function window:UpdateTitle(newtitle)
+title.Text = newtitle
+end
+--
         library.began[#library.began + 1] = function(Input)
             if Input.UserInputType == Enum.UserInputType.MouseButton1 and list_outline.Visible and window.isVisible then
                 if utility:MouseOverDrawing({list_bar.Position.X, list_bar.Position.Y, list_bar.Position.X + list_bar.Size.X, list_bar.Position.Y + list_bar.Size.Y}) then
@@ -7311,4 +7315,7 @@ do
         return list
     end
 end
+
+
+
 return library, utility, library.pointers, theme
