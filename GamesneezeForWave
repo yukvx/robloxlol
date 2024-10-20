@@ -399,7 +399,8 @@ do
 	]]
 --[[ chatgpt time :moneymouth: 🤑 ]]
 function utility:LoadImage(instance, imageName, imageLink)
-    if not instance or not instance:IsA("ImageLabel") and not instance:IsA("ImageButton") then
+    -- Check if the instance is valid and is either an ImageLabel or ImageButton
+    if not instance or (not instance:IsA("ImageLabel") and not instance:IsA("ImageButton")) then
         warn("Instance is not a valid ImageLabel or ImageButton")
         return
     end
@@ -431,6 +432,7 @@ function utility:LoadImage(instance, imageName, imageLink)
         instance.Data = data
     end
 end
+
 
 
 
