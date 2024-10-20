@@ -1,8 +1,6 @@
---using table cs sexy
-
--- i fucking hate you wave
-
-
+--[[using table cs sexy
+Wave: The worst exec to exist out there | 10/20/24
+]]
 -- // Variables
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
