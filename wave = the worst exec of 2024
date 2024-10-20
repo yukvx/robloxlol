@@ -18,6 +18,25 @@ local hs = game:GetService("HttpService")
 local cas = game:GetService("ContextActionService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
+--[[ took this shit from eth cs im too lazy to do some shit ]]
+local ReplicatedFirst   = cloneref(game:GetService("ReplicatedFirst"));
+local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
+local Lighting          = cloneref(game:GetService("Lighting"));
+local RunService        = cloneref(game:GetService("RunService"));
+local TweenService      = cloneref(game:GetService("TweenService"));
+local TextService 		= cloneref(game:GetService("TextService"));
+local UserInputService  = cloneref(game:GetService("UserInputService"));
+local Players 			= cloneref(game:GetService("Players"));
+local HttpService       = cloneref(game:GetService("HttpService"));
+local LogService        = cloneref(game:GetService("LogService"));
+local ScriptContext     = cloneref(game:GetService("ScriptContext"));
+local TeleportService   = cloneref(game:GetService("TeleportService"));
+local SoundService      = cloneref(game:GetService("SoundService"));
+local ProxPromptService = cloneref(game:GetService("ProximityPromptService"));
+local CoreGui           = cloneref(game:GetService("CoreGui"));
+local Stats             = cloneref(game:GetService("Stats"));
+local ContentProvider   = cloneref(game:GetService("ContentProvider"));
+local Workspace         = cloneref(game:GetService("Workspace"));
 --
 local localplayer = plrs.LocalPlayer
 --
