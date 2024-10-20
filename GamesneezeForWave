@@ -406,10 +406,10 @@ function utility:LoadImage(instance, imageName, imageLink)
     if isfile(filePath) then
         data = readfile(filePath)
     elseif imageLink then
-        -- Support rbxassetid and http protocols
         if string.sub(imageLink, 1, 13) == "rbxassetid://" then
-            -- Load directly using the asset ID, no need to download
-            data = game:GetService("InsertService"):LoadAsset(tonumber(string.sub(imageLink, 14)))
+            -- Set the rbxassetid directly to the instance's image property
+            instance.Image = imageLink
+            return -- Exit here as no need to download or write file
         elseif string.sub(imageLink, 1, 4) == "http" then
             -- Download the image via HTTP and save it locally
             data = game:HttpGet(imageLink)
@@ -426,6 +426,7 @@ function utility:LoadImage(instance, imageName, imageLink)
         instance.Data = data
     end
 end
+
 
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
@@ -7363,7 +7364,6 @@ do
     end
 end
 
---utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
+utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
-
