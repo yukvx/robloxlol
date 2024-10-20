@@ -399,6 +399,11 @@ do
 	]]
 --[[ chatgpt time :moneymouth: 🤑 ]]
 function utility:LoadImage(instance, imageName, imageLink)
+    if not instance or not instance:IsA("ImageLabel") and not instance:IsA("ImageButton") then
+        warn("Instance is not a valid ImageLabel or ImageButton")
+        return
+    end
+
     local filePath = library.folders.assets.."/"..imageName..".png"
     local data
     
@@ -426,6 +431,7 @@ function utility:LoadImage(instance, imageName, imageLink)
         instance.Data = data
     end
 end
+
 
 
     --
@@ -7364,6 +7370,6 @@ do
     end
 end
 
-utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
+--utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
