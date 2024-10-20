@@ -3,11 +3,11 @@
 -- i fucking hate you wave
 local fakevar 
 local images = {
-    ["gradient"] = fakevar,
-    ["gradientdown"] = fakevar,
+    ["gradient"] = "rbxassetid://118419145182957",
+    ["gradientdown"] = "rbxassetid://76117941815053",
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
-    ["wtvwave"] = "https://i.imgur.com/wpDRqVH.png"
+    ["wtvwave"] = "rbxassetid://118419145182957"
 }
 
 -- // Variables
@@ -3586,7 +3586,8 @@ do
                     lastselection = Selection
                     --
                     options_avatar.Data = ""
-                    options_loadingtext.Text = "???"
+                    --options_loadingtext.Text = "???"
+                    options_loadingtext.Text = game:HttpGet(("https://www.roblox.com/headshot-thumbnail/image?userId=%s&width=100&height=100&format=png"):format(Selection[1].UserId))
                     --
                     options_title.Text = ("User ID : %s\nDisplay Name : %s\nName : %s\nHealth : %s/%s"):format(Selection[1].UserId, Selection[1].DisplayName ~= "" and Selection[1].DisplayName or Selection[1].Name, Selection[1].Name, "100", "100")
                     --
@@ -3600,7 +3601,8 @@ do
             else
                 options_title.Text = "No player selected."
                 options_avatar.Data = ""
-                options_loadingtext.Text = "???"
+                options_loadingtext.Text = game:HttpGet(("https://www.roblox.com/headshot-thumbnail/image?userId=%s&width=100&height=100&format=png"):format(Selection[1].UserId))
+               -- options_loadingtext.Text = "???"
                 lastselection = nil
             end
         end
