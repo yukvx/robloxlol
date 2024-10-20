@@ -397,6 +397,36 @@ do
         end
     end
 	]]
+--[[ chatgpt time :moneymouth: 🤑 ]]
+function utility:LoadImage(instance, imageName, imageLink)
+    local filePath = library.folders.assets.."/"..imageName..".png"
+    local data
+    
+    -- Check if the image file exists locally
+    if isfile(filePath) then
+        data = readfile(filePath)
+    elseif imageLink then
+        -- Support rbxassetid and http protocols
+        if string.sub(imageLink, 1, 13) == "rbxassetid://" then
+            -- Load directly using the asset ID, no need to download
+            data = game:GetService("InsertService"):LoadAsset(tonumber(string.sub(imageLink, 14)))
+        elseif string.sub(imageLink, 1, 4) == "http" then
+            -- Download the image via HTTP and save it locally
+            data = game:HttpGet(imageLink)
+            writefile(filePath, data)
+        else
+            return -- Invalid link format, exit function
+        end
+    else
+        return
+    end
+    
+    -- Set image data to the instance if both are available
+    if data and instance then
+        instance.Data = data
+    end
+end
+
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
         local currentTime = 0
