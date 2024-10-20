@@ -1,14 +1,7 @@
 --using table cs sexy
 
 -- i fucking hate you wave
-local fakevar 
-local images = {
-    ["gradient"] = "rbxassetid://118419145182957",
-    ["gradientdown"] = "rbxassetid://76117941815053",
-    ["arrowdown"] = fakevar,
-    ["arrowup"] = fakevar,
-    ["wtvwave"] = "rbxassetid://118419145182957"
-}
+
 
 -- // Variables
 local ws = game:GetService("Workspace")
@@ -19,6 +12,9 @@ local cas = game:GetService("ContextActionService")
 local plrs = game:GetService("Players")
 local stats = game:GetService("Stats")
 --[[ took this shit from eth cs im too lazy to do some shit ]]
+
+cloneref = cloneref ~= nil and cloneref or function(f) return f end; getgenv = getgenv ~= nil and getgenv or function() return _G end; 
+
 local ReplicatedFirst   = cloneref(game:GetService("ReplicatedFirst"));
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
 local Lighting          = cloneref(game:GetService("Lighting"));
@@ -37,6 +33,17 @@ local CoreGui           = cloneref(game:GetService("CoreGui"));
 local Stats             = cloneref(game:GetService("Stats"));
 local ContentProvider   = cloneref(game:GetService("ContentProvider"));
 local Workspace         = cloneref(game:GetService("Workspace"));
+--
+
+local fakevar 
+local images = {
+    ["gradient"] = "rbxassetid://118419145182957",
+    ["gradientdown"] = "rbxassetid://76117941815053",
+    ["arrowdown"] = fakevar,
+    ["arrowup"] = fakevar,
+    ["wtvwave"] = "rbxassetid://118419145182957"
+}
+
 --
 local localplayer = plrs.LocalPlayer
 --
