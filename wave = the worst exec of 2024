@@ -377,7 +377,7 @@ do
     function utility:GetScreenSize()
         return ws.CurrentCamera.ViewportSize
     end
-    --
+    --[[
     function utility:LoadImage(instance, imageName, imageLink)
         local data
         --
@@ -396,6 +396,7 @@ do
             instance.Data = data
         end
     end
+	]]
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
         local currentTime = 0
