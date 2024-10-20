@@ -36,15 +36,15 @@ local Workspace         = cloneref(game:GetService("Workspace"));
 --
 
 local fakevar 
---[[
+
 local images = {
-    ["gradient"] = "rbxassetid://118419145182957",
-    ["gradientdown"] = "rbxassetid://76117941815053",
+    ["gradient"] = fakevar,
+    ["gradientdown"] = fakevar,
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
-    ["wtvwave"] = "rbxassetid://118419145182957"
+    ["wtvwave"] = fakevar
 }
-]]
+
 
 --
 local localplayer = plrs.LocalPlayer
