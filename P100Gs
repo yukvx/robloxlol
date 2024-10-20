@@ -1,6 +1,8 @@
---[[using table cs sexy
-Wave: The worst exec to exist out there | 10/20/24
-]]
+--using table cs sexy
+
+-- i fucking hate you wave
+
+
 -- // Variables
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
@@ -41,6 +43,7 @@ local images = {
     ["arrowup"] = fakevar,
     ["wtvwave"] = "rbxassetid://118419145182957"
 }
+
 
 --
 local localplayer = plrs.LocalPlayer
@@ -396,7 +399,7 @@ do
     end
 	]]
 --[[ chatgpt time :moneymouth: 🤑 ]]
-
+--[[
 function utility:LoadImage(instance, imageName, imageLink)
     -- Check if instance is valid and has the IsA method (i.e., it's an object)
     if typeof(instance) ~= "Instance" or (not instance:IsA("ImageLabel") and not instance:IsA("ImageButton")) then
@@ -430,7 +433,50 @@ function utility:LoadImage(instance, imageName, imageLink)
     if data and instance then
         instance.Data = data
     end
+end]]
+
+function utility:LoadImage(instance, imageName, imageLink)
+    -- Print instance type for debugging
+    print("Instance:", instance)
+    print("Instance type:", typeof(instance))
+    
+    -- Check if instance is valid and has the IsA method (i.e., it's an object)
+    if typeof(instance) ~= "Instance" then
+        warn("The provided instance is not a valid Roblox Instance.")
+        return
+    elseif not instance:IsA("ImageLabel") and not instance:IsA("ImageButton") then
+        warn("Instance is not a valid ImageLabel or ImageButton. Instance type: ", instance.ClassName)
+        return
+    end
+
+    local filePath = library.folders.assets.."/"..imageName..".png"
+    local data
+    
+    -- Check if the image file exists locally
+    if isfile(filePath) then
+        data = readfile(filePath)
+    elseif imageLink then
+        if string.sub(imageLink, 1, 13) == "rbxassetid://" then
+            -- Set the rbxassetid directly to the instance's image property
+            instance.Image = imageLink
+            return -- Exit here as no need to download or write file
+        elseif string.sub(imageLink, 1, 4) == "http" then
+            -- Download the image via HTTP and save it locally
+            data = game:HttpGet(imageLink)
+            writefile(filePath, data)
+        else
+            return -- Invalid link format, exit function
+        end
+    else
+        return
+    end
+    
+    -- Set image data to the instance if both are available
+    if data and instance then
+        instance.Data = data
+    end
 end
+
 
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
