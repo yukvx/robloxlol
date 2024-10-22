@@ -434,10 +434,10 @@ do
         end
     end
 end
-
+--[[
 utility:LoadImage(colorpicker_open_picker_image, "valsat", "https://i.imgur.com/wpDRqVH.png")
 utility:LoadImage(colorpicker_open_huepicker_image, "hue", "https://i.imgur.com/iEOsHFv.png")
-
+]]
 -- // Library Functions
 do
     library.__index = library
