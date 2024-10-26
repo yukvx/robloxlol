@@ -1,7 +1,7 @@
 local randomvars = {
  t = true;
  f = false;
- check = "zzz"
+ check = "zzz";
  checkp = print(check)
 }
 CheckStatus = {
