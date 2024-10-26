@@ -1,3 +1,9 @@
+local randomvars = {
+ t = true;
+ f = false;
+ check = "zzz"
+ checkp = print(check)
+}
 CheckStatus = {
 TXBgLuuIhgOuVEOhlNlRUq = false
 }
