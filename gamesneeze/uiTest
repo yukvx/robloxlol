@@ -38,11 +38,11 @@ local Workspace         = cloneref(game:GetService("Workspace"));
 local fakevar 
 
 local images = {
-    ["gradient"] = "rbxassetid://94260870444688",
-    ["gradientdown"] = "rbxassetid://83210812293563",
-    ["gradientR2L"] = "rbxassetid://139074688191415",
-    ["gradient0"] = "rbxassetid://91694589298763",
-    ["gradientL130"] = "rbxassetid://94260870444688",
+    ["gradient"] = "http://www.roblox.com/asset/?id=94260870444688",
+    ["gradientdown"] = "http://www.roblox.com/asset/?id=83210812293563",
+    ["gradientR2L"] = "http://www.roblox.com/asset/?id=139074688191415",
+    ["gradient0"] = "http://www.roblox.com/asset/?id=91694589298763",
+    ["gradientL130"] = "http://www.roblox.com/asset/?id=94260870444688",
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
     ["wtvwave"] = fakevar
