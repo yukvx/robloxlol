@@ -115,8 +115,8 @@ local theme = {
     textdark = Color3.fromRGB(175, 175, 175),
     textborder = Color3.fromRGB(0, 0, 0),
     cursoroutline = Color3.fromRGB(10, 10, 10),
-    font = 3,
-    textsize = 13
+    font = 1,
+    textsize = 8.5
 }
 -- // utility Functions
 do
@@ -172,7 +172,7 @@ do
             instance = frame
         elseif instanceType == "TextLabel" or instanceType == "textlabel" then
             local text = Drawing.new("Text")
-            text.Font = 3
+            text.Font = 1
             text.Visible = true
             text.Outline = true
             text.Center = false
