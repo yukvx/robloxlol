@@ -45,7 +45,7 @@ local images = {
     ["gradientL130"] = fakevar,
     ["arrowdown"] = fakevar,
     ["arrowup"] = fakevar,
-    ["wtvwave"] = fakevar
+    ["wtvwave"] = "https://i.imgur.com/wpDRqVH.png"
 }
 
 
@@ -115,8 +115,8 @@ local theme = {
     textdark = Color3.fromRGB(175, 175, 175),
     textborder = Color3.fromRGB(0, 0, 0),
     cursoroutline = Color3.fromRGB(10, 10, 10),
-    font = 1,
-    textsize = 12.3
+    font = 2,
+    textsize = 13
 }
 -- // utility Functions
 do
@@ -172,7 +172,7 @@ do
             instance = frame
         elseif instanceType == "TextLabel" or instanceType == "textlabel" then
             local text = Drawing.new("Text")
-            text.Font = 1
+            text.Font = 3
             text.Visible = true
             text.Outline = true
             text.Center = false
@@ -7415,6 +7415,6 @@ do
     end
 end
 
---utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
+utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
