@@ -4,14 +4,16 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/liam0999/Drawing2/ref
 task.wait(0.2);
 --
 local images = {
-    ["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true";
-    ["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png";
-    ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png";
-    ["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png";
-    ["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png";
-    ["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png";
-    ["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png";
-    ["hue"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/hue.png"
+["hue"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/hue.png";
+["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png";
+["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png";
+["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png";
+["clrptrans"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/trasbar.png";
+--
+["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true";
+["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png";
+["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png";
+["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png"
 }
 --
 local ws = game:GetService("Workspace")
@@ -130,7 +132,7 @@ do
         local instanceHidden = false
         local instance = nil
         --
-		if instanceType == "Frame" or instanceType == "frame" then
+            if instanceType == "Frame" or instanceType == "frame" then
             local frame = Drawing.new("Square")
             frame.Visible = true
             frame.Filled = true
@@ -145,7 +147,7 @@ do
             local text = Drawing.new("Text")
             text.Font = 3
             text.Visible = true
-            text.Outline = true
+            text.Outline = false -- true
             text.Center = false
             text.Color = Color3.fromRGB(255,255,255)
             text.ZIndex = 50
