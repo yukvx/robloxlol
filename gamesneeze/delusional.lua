@@ -9,9 +9,9 @@ local images = {
     ["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png",
     ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png",
     ["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png",
-    ["arrowdown"] = "https://i.imgur.com/WmoqnZ5.png",
-    ["arrowup"] = "https://i.imgur.com/yMWBAAY.png",
-    ["valsat"] = "https://i.imgur.com/LI3ZcO5.png",
+    ["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png",
+    ["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png",
+    ["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png",
 }
 --
 local ws = game:GetService("Workspace")
