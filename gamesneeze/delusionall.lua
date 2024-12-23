@@ -1,41 +1,8 @@
 -- ily liam <3
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/liam0999/Drawing2/refs/heads/main/Drawing2.lua"))();
-task.wait(0.1)
 
--- // Variables
-local ws = game:GetService("Workspace")
-local uis = game:GetService("UserInputService")
-local rs = game:GetService("RunService")
-local hs = game:GetService("HttpService")
-local cas = game:GetService("ContextActionService")
-local plrs = game:GetService("Players")
-local stats = game:GetService("Stats")
---[[ took this shit from eth cs im too lazy to do some shit ]]
-
-cloneref = cloneref ~= nil and cloneref or function(f) return f end; getgenv = getgenv ~= nil and getgenv or function() return _G end; 
-
-local ReplicatedFirst   = cloneref(game:GetService("ReplicatedFirst"));
-local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
-local Lighting          = cloneref(game:GetService("Lighting"));
-local RunService        = cloneref(game:GetService("RunService"));
-local TweenService      = cloneref(game:GetService("TweenService"));
-local TextService 		= cloneref(game:GetService("TextService"));
-local UserInputService  = cloneref(game:GetService("UserInputService"));
-local Players 			= cloneref(game:GetService("Players"));
-local HttpService       = cloneref(game:GetService("HttpService"));
-local LogService        = cloneref(game:GetService("LogService"));
-local ScriptContext     = cloneref(game:GetService("ScriptContext"));
-local TeleportService   = cloneref(game:GetService("TeleportService"));
-local SoundService      = cloneref(game:GetService("SoundService"));
-local ProxPromptService = cloneref(game:GetService("ProximityPromptService"));
-local CoreGui           = cloneref(game:GetService("CoreGui"));
-local Stats             = cloneref(game:GetService("Stats"));
-local ContentProvider   = cloneref(game:GetService("ContentProvider"));
-local Workspace         = cloneref(game:GetService("Workspace"));
---
-
-local fakevar 
+task.wait(0.2)
 
 local images = {
     ["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true",
@@ -46,7 +13,6 @@ local images = {
     ["arrowup"] = "https://i.imgur.com/yMWBAAY.png",
     ["valsat"] = "https://i.imgur.com/LI3ZcO5.png",
 }
-
 
 --
 local localplayer = plrs.LocalPlayer
@@ -70,9 +36,9 @@ local library = {
     hovers = {},
     Relations = {},
     folders = {
-        main = "Agx",
-        assets = "Agx/Images",
-        configs = "Agx/Configs"
+        main = "KauzC",
+        assets = "KauzC/Images",
+        configs = "KauzC/Configs"
     },
     shared = {
         initialized = false,
@@ -102,7 +68,6 @@ local utility = {
 }
 local pages = {}
 local sections = {}
--- Theme Variables
 --local themes = {}
 local theme = {
     accent = Color3.fromRGB(55, 175, 225),
@@ -400,86 +365,7 @@ do
             instance.Data = data
         end
     end
---[[ chatgpt time :moneymouth: 🤑 ]]
---[[
-function utility:LoadImage(instance, imageName, imageLink)
-    -- Check if instance is valid and has the IsA method (i.e., it's an object)
-    if typeof(instance) ~= "Instance" or (not instance:IsA("ImageLabel") and not instance:IsA("ImageButton")) then
-        warn("Instance is not a valid ImageLabel or ImageButton")
-        return
-    end
 
-    local filePath = library.folders.assets.."/"..imageName..".png"
-    local data
-    
-    -- Check if the image file exists locally
-    if isfile(filePath) then
-        data = readfile(filePath)
-    elseif imageLink then
-        if string.sub(imageLink, 1, 13) == "rbxassetid://" then
-            -- Set the rbxassetid directly to the instance's image property
-            instance.Image = imageLink
-            return -- Exit here as no need to download or write file
-        elseif string.sub(imageLink, 1, 4) == "http" then
-            -- Download the image via HTTP and save it locally
-            data = game:HttpGet(imageLink)
-            writefile(filePath, data)
-        else
-            return -- Invalid link format, exit function
-        end
-    else
-        return
-    end
-    
-    -- Set image data to the instance if both are available
-    if data and instance then
-        instance.Data = data
-    end
-end]]
---[[
-function utility:LoadImage(instance, imageName, imageLink)
-    -- Print instance type for debugging
-    print("Instance:", instance)
-    print("Instance type:", typeof(instance))
-    
-    -- Check if instance is valid and has the IsA method (i.e., it's an object)
-    if typeof(instance) ~= "Instance" then
-        warn("The provided instance is not a valid Roblox Instance.")
-        return
-    elseif not instance:IsA("ImageLabel") and not instance:IsA("ImageButton") then
-        warn("Instance is not a valid ImageLabel or ImageButton. Instance type: ", instance.ClassName)
-        return
-    end
-
-    local filePath = library.folders.assets.."/"..imageName..".png"
-    local data
-    
-    -- Check if the image file exists locally
-    if isfile(filePath) then
-        data = readfile(filePath)
-    elseif imageLink then
-        if string.sub(imageLink, 1, 13) == "rbxassetid://" then
-            -- Set the rbxassetid directly to the instance's image property
-            instance.Image = imageLink
-            return -- Exit here as no need to download or write file
-        elseif string.sub(imageLink, 1, 4) == "http" then
-            -- Download the image via HTTP and save it locally
-            data = game:HttpGet(imageLink)
-            writefile(filePath, data)
-        else
-            return -- Invalid link format, exit function
-        end
-    else
-        return
-    end
-    
-    -- Set image data to the instance if both are available
-    if data and instance then
-        instance.Data = data
-    end
-end
-]]
---[[ wowzers! ]] 
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
         local currentTime = 0
