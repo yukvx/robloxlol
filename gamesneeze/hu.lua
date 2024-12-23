@@ -3709,11 +3709,9 @@ do
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
                                 utility:LoadImage(colorpicker_open_transparency_image, "transp", images["clrpTransBar"])
-                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientbar.png")
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
-                            --utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png") cant find the original </3
                             utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["hue"])
                             --
                             window.currentContent.frame = colorpicker_open_inline
@@ -6085,7 +6083,6 @@ do
                         end
                         --
                         utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
-                        --utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png") cant find the original </3
                         utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["hue"])
                         --
                         window.currentContent.frame = colorpicker_open_inline
@@ -6526,11 +6523,9 @@ do
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
                                 utility:LoadImage(colorpicker_open_transparency_image, "transp", images["clrpTransBar"])
-                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientbar.png") not being used..?
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
-                            --utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png")
                             utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["hue"])
                             --
                             window.currentContent.frame = colorpicker_open_inline
@@ -6810,4 +6805,5 @@ do
         return list
     end
 end
+--
 return library, utility, library.pointers, theme
