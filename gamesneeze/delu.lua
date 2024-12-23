@@ -1,17 +1,17 @@
 -- ily liam <3
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/liam0999/Drawing2/refs/heads/main/Drawing2.lua"))();
-
-task.wait(0.2)
-
+--
+task.wait(0.2);
+--
 local images = {
-    ["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true",
-    ["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png",
-    ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png",
-    ["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png",
-    ["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png",
-    ["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png",
-    ["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png",
+    ["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true";
+    ["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png";
+    ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png";
+    ["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png";
+    ["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png";
+    ["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png";
+    ["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png";
+    ["hue"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/hue.png"
 }
 --
 local ws = game:GetService("Workspace")
@@ -4226,7 +4226,9 @@ do
                                
                             end
                             --
-
+                            utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
+                            --utility:LoadImage(colorpicker_open_picker_cursor, "valsat_cursor", "https://raw.githubusercontent.com/mvonwalk/splix-assets/main/Images-cursor.png") idk i cant find the original img :sob:
+                            utility:LoadImage(colorpicker_open_huepicker_image, "hue", images["hue"])
                             --
                             window.currentContent.frame = colorpicker_open_inline
                             window.currentContent.colorpicker = colorpicker
@@ -7306,7 +7308,5 @@ do
         return list
     end
 end
-
---utility:LoadImage(colorpicker_open_picker_image, "valsat", images["wtvwave"])
 
 return library, utility, library.pointers, theme
