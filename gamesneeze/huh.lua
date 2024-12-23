@@ -9,7 +9,7 @@ local images = {
 ["clrptrans"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/transThing.png";
 ["clrpTransBar"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/clrpTransBar.png";
 --
-["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true";
+["gradient"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient0.png";
 ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png";
 ["gradientL130"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient(-130).png";
 ["gradientdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradient180.png"
