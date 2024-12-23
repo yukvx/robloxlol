@@ -13,7 +13,14 @@ local images = {
     ["arrowup"] = "https://i.imgur.com/yMWBAAY.png",
     ["valsat"] = "https://i.imgur.com/LI3ZcO5.png",
 }
-
+--
+local ws = game:GetService("Workspace")
+local uis = game:GetService("UserInputService")
+local rs = game:GetService("RunService")
+local hs = game:GetService("HttpService")
+local cas = game:GetService("ContextActionService")
+local plrs = game:GetService("Players")
+local stats = game:GetService("Stats")
 --
 local localplayer = plrs.LocalPlayer
 --
