@@ -8,7 +8,8 @@ local images = {
 ["valsat"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/valsat.png";
 ["arrowup"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/uparrow.png";
 ["arrowdown"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/downarrow.png";
-["clrptrans"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/trasbar.png";
+["clrptrans"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/transThing.png";
+["clrpTransBar"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/clrpTransBar.png";
 --
 ["gradient"] = "https://github.com/yukvx/robloxlol/blob/main/gamesneeze/Assets/gradient0.png?raw=true";
 ["gradientR2L"] = "https://raw.githubusercontent.com/yukvx/robloxlol/refs/heads/main/gamesneeze/Assets/gradientR2L.png";
@@ -4225,7 +4226,8 @@ do
                                     Color = Color3.fromHSV(0, 0, 1 - colorpicker.current[4]),
                                 }, colorpicker.holder.drawings);colorpicker.holder.transparency_cursor[3] = colorpicker_open_transparency_cursor_color
                                 --
-                               
+                                utility:LoadImage(colorpicker_open_transparency_image, "transp", images["clrpTransBar"])
+                                --utility:LoadImage(colorpicker_open_transparency_image, "transp", "https://i.imgur.com/VcMAYjL.png")
                             end
                             --
                             utility:LoadImage(colorpicker_open_picker_image, "valsat", images["valsat"])
